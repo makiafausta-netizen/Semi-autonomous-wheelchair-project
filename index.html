@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salient Fausta Makia — Hardware Engineering Portfolio</title>
+<title>Salient Fausta Makia - Hardware Engineering Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -1035,7 +1035,7 @@
       <div class="hero-visual fade-up" style="transition-delay:0.2s">
         <div class="floating-chip chip-1">▲ NVIDIA Orin Nano</div>
         <div class="hero-img-wrap">
-          <img src="Picture3.png" alt="Hardware electronics sensor array">
+          <img src="Picture3.png" alt="Hardware Electronic Array">
           <div class="hero-img-overlay"></div>
           <div class="scan-line"></div>
           <div class="corner-tag">LIVE SENSOR FUSION · ROS2</div>
@@ -1053,15 +1053,15 @@
       <div class="hw-photos fade-up">
         <div class="hw-photo wide">
           <img src="Picture2.png" alt="Full wheelchair sensor array with NVIDIA Orin Nano">
-          <div class="photo-label">Full build — NVIDIA Orin Nano + dual RPLidar + Pico Flexx</div>
+          <div class="photo-label">Full build wiring diagram </div>
         </div>
         <div class="hw-photo">
           <img src="picture 4.PNG" alt="ESP32 + BNO08x IMU on breadboard">
-          <div class="photo-label">ESP32 + BNO08x IMU on breadboard</div>
+          <div class="photo-label">Matlab Simulation environment</div>
         </div>
         <div class="hw-photo">
           <img src="picture6.PNG" alt="RPLidar A1M8 mounted to frame">
-          <div class="photo-label">RPLidar A1M8 ×2 — 2D 360° scan</div>
+          <div class="photo-label">NVIDIA Orin Nano</div>
         </div>
       </div>
 
@@ -1081,7 +1081,7 @@
           <div class="component-item"><div class="dot"></div><strong>BNO08x IMU</strong> — provides orientation quaternion + gyro yaw rate to ROS2</div>
           <div class="component-item"><div class="dot"></div><strong>HC-SR04 ×4</strong> — ultrasonic (FL, FR, BL, BR), each published as PointCloud2</div>
           <div class="component-item"><div class="dot"></div><strong>ESP32</strong> — MCU sensor hub; runs custom serial framing protocol bridging sensors to ROS2</div>
-          <div class="component-item"><div class="dot"></div><strong>MCP4728 DAC + CD4066 analog switch</strong> — motor control interface from compute to drive electronics</div>
+          <div class="component-item"><div class="dot"></div><strong>NVIDIA Jetson</strong> — connected to all the sensors collecting sensor data </div>
         </div>
 
         <div class="highlight-card">
@@ -1111,8 +1111,8 @@
             <div class="arch-nodes">
               <div class="arch-node">Pico Flexx (ToF)</div>
               <div class="arch-node">RPLidar ×2</div>
-              <div class="arch-node">BNO08x IMU</div>
-              <div class="arch-node">HC-SR04 ×4</div>
+              <div class="arch-node"> IMU</div>
+              <div class="arch-node">Ultrasonic Sensors ×4</div>
             </div>
           </div>
 
@@ -1312,12 +1312,12 @@
           <div class="arch-layer">
             <div class="arch-layer-label">Firmware (Arduino IDE)</div>
             <div class="arch-nodes">
-              <div class="arch-node">BNO08x → quaternion + gyro</div>
-              <div class="arch-node">HC-SR04 ×4 → distances (cm)</div>
+              <div class="arch-node">orientation + gyro</div>
+              <div class="arch-node">Ultrasonic → distances (cm)</div>
             </div>
           </div>
 
-          <div class="arch-arrow">↓ UART 115200 baud</div>
+          <div class="arch-arrow">↓ </div>
 
           <div class="arch-layer">
             <div class="arch-layer-label">Serial framing</div>
@@ -1335,7 +1335,7 @@
             <div class="arch-nodes">
               <div class="arch-node">IMU_G → buffer _gyro_z</div>
               <div class="arch-node">IMU_Q → merge + publish Imu</div>
-              <div class="arch-node">US → Int32MultiArray</div>
+              <div class="arch-node">US </div>
             </div>
           </div>
 
@@ -1618,7 +1618,7 @@
         <div class="align-num">01</div>
         <div class="align-skill">Hardware Drivers from SDK Up</div>
         <div class="align-wb">→ WB: sensor manufacturing &amp; calibration infrastructure</div>
-        <div class="align-desc">Wrote hardware drivers for 3 distinct sensor types — ToF depth camera via Royale SDK, 2D LiDAR over serial, 6 ultrasonic and IMU. The discipline of making sensors produce trustworthy data is identical to calibration infrastructure work.</div>
+        <div class="align-desc">Wrote hardware drivers for 3 distinct sensor types. Depth camera via Royale SDK, 2D LiDAR over serial, 6 ultrasonic and IMU. The discipline of making sensors produce trustworthy data is identical to calibration infrastructure work.</div>
       </div>
 
       <div class="alignment-card fade-up" style="transition-delay:0.1s">
@@ -1653,7 +1653,7 @@
         <div class="align-num">06</div>
         <div class="align-skill">End-to-End Ownership</div>
         <div class="align-wb">→ WB: high agency, own projects end-to-end</div>
-        <div class="align-desc">I started with a donated wheelchair and ended with a working autonomous perception system: power wiring, ESP32 firmware, ROS2 drivers, sensor fusion, MATLAB simulation, and deployment. No handoff. I solved the ROS1→ROS2 migration myself. </div>
+        <div class="align-desc">I started with a donated wheelchair and ended with a working autonomous perception system: power wiring, ESP32 firmware, ROS2 drivers, sensor fusion, and MATLAB simulation testing both hardware and software. I solved the ROS1→ROS2 migration myself. </div>
       </div>
     </div>
   </div>
@@ -1666,21 +1666,21 @@
       <div class="section-tag" style="justify-content:center;">Submit questions via POST request</div>
       <h2>Let's Talk</h2>
       <p>
-        Reach out by email or LinkedIn — I'm excited about the opportunity to bring hands-on sensor integration and data pipeline work to WindBorne's balloon constellation.
+         Weather uncertainty kills people. It misroutes disaster responders, misdirects hurricane evacuations, and costs billions in avoidable damage every year. WindBorne's mission to build a planetary nervous system that closes the global atmospheric data gap is exactly the kind of problem I want to work on
       </p>
 
       <div class="contact-links">
         <a href="mailto:salient@example.com" class="contact-chip">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          salient@example.com
+          sfmakiankonghoenoh@widener.edu
         </a>
         <a href="https://linkedin.com/in/salient-fausta-makia" target="_blank" class="contact-chip">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
+          www.linkedin.com/in/salient-fausta
         </a>
         <a href="https://github.com/salient-makia" target="_blank" class="contact-chip">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-          GitHub
+          https://github.com/makiafausta-netizen
         </a>
       </div>
 
@@ -1693,7 +1693,7 @@
 
 <div class="footer">
   <div class="container">
-    built for windborne systems sensors internship application · 2025
+    built for windborne systems sensors internship application · 2026
   </div>
 </div>
 
