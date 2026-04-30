@@ -12,8 +12,8 @@
     --black: #faf7ff;
     --off-black: #f4effc;
     --panel: #ffffff;
-    --border: rgba(160,120,210,0.1);
-    --border-bright: rgba(160,120,210,0.22);
+    --border: rgba(160,120,210,0.12);
+    --border-bright: rgba(160,120,210,0.25);
     --teal: #9b6dd6;
     --teal-dim: rgba(155,109,214,0.1);
     --teal-glow: rgba(155,109,214,0.04);
@@ -28,9 +28,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     background: var(--black);
     color: var(--text);
@@ -40,31 +38,28 @@
     overflow-x: hidden;
   }
 
-  /* ─── PASTEL GRADIENT BG ─── */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     background:
-      radial-gradient(ellipse 80% 60% at 10% 0%, rgba(220,180,255,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse 80% 60% at 10% 0%, rgba(220,180,255,0.22) 0%, transparent 60%),
       radial-gradient(ellipse 60% 50% at 90% 100%, rgba(255,182,210,0.15) 0%, transparent 60%);
     pointer-events: none;
     z-index: 0;
   }
 
-  /* ─── GRID LINES ─── */
   .grid-bg {
     position: fixed;
     inset: 0;
     background-image:
-      linear-gradient(rgba(160,120,210,0.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(160,120,210,0.07) 1px, transparent 1px);
+      linear-gradient(rgba(160,120,210,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(160,120,210,0.06) 1px, transparent 1px);
     background-size: 60px 60px;
     pointer-events: none;
     z-index: 0;
   }
 
-  /* ─── NAV ─── */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -74,8 +69,8 @@
     justify-content: space-between;
     padding: 0 2.5rem;
     height: 60px;
-    background: rgba(250,247,255,0.88);
-    backdrop-filter: blur(12px);
+    background: rgba(250,247,255,0.9);
+    backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
 
@@ -102,14 +97,9 @@
     text-transform: uppercase;
     transition: color 0.2s;
   }
-
   .nav-links a:hover { color: var(--teal); }
 
-  /* ─── SECTIONS ─── */
-  section {
-    position: relative;
-    z-index: 1;
-  }
+  section { position: relative; z-index: 1; }
 
   .container {
     max-width: 1100px;
@@ -117,7 +107,7 @@
     padding: 0 2.5rem;
   }
 
-  /* ─── HERO ─── */
+  /* ── HERO ── */
   #hero {
     min-height: 100vh;
     display: flex;
@@ -144,12 +134,10 @@
     align-items: center;
     gap: 0.75rem;
   }
-
   .hero-label::before {
     content: '';
     display: inline-block;
-    width: 24px;
-    height: 1px;
+    width: 24px; height: 1px;
     background: var(--teal);
   }
 
@@ -161,10 +149,7 @@
     letter-spacing: -0.02em;
     margin-bottom: 1.5rem;
   }
-
-  h1 span {
-    color: var(--teal);
-  }
+  h1 span { color: var(--teal); }
 
   .hero-sub {
     font-size: 1rem;
@@ -190,7 +175,6 @@
     padding: 1.25rem 1rem;
     text-align: center;
   }
-
   .stat-num {
     font-family: var(--font-display);
     font-size: 1.75rem;
@@ -199,7 +183,6 @@
     line-height: 1;
     margin-bottom: 0.25rem;
   }
-
   .stat-label {
     font-family: var(--font-mono);
     font-size: 10px;
@@ -226,33 +209,20 @@
     cursor: pointer;
     border: none;
   }
-
   .btn-primary {
     background: var(--teal);
-    color: #000;
+    color: #fff;
     font-weight: 500;
   }
-
-  .btn-primary:hover {
-    background: #00f0c0;
-    transform: translateY(-1px);
-  }
-
+  .btn-primary:hover { background: #7c4fb8; transform: translateY(-1px); }
   .btn-ghost {
     background: transparent;
     color: var(--text-muted);
     border: 1px solid var(--border-bright);
   }
+  .btn-ghost:hover { color: var(--text); border-color: var(--teal); }
 
-  .btn-ghost:hover {
-    color: var(--text);
-    border-color: var(--teal);
-  }
-
-  /* Hero visual side */
-  .hero-visual {
-    position: relative;
-  }
+  .hero-visual { position: relative; }
 
   .hero-img-wrap {
     position: relative;
@@ -260,41 +230,35 @@
     overflow: hidden;
     border: 1px solid var(--border-bright);
   }
-
   .hero-img-wrap img {
     width: 100%;
     display: block;
     filter: saturate(0.85) contrast(1.05);
   }
-
   .hero-img-overlay {
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, rgba(155,109,214,0.12) 0%, transparent 60%);
     pointer-events: none;
   }
-
   .scan-line {
     position: absolute;
     left: 0; right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, rgba(155,109,214,0.5), transparent);
+    background: linear-gradient(90deg, transparent, rgba(155,109,214,0.6), transparent);
     animation: scan 3s ease-in-out infinite;
     opacity: 0.6;
   }
-
   @keyframes scan {
     0% { top: 0; opacity: 0; }
     10% { opacity: 0.6; }
     90% { opacity: 0.6; }
     100% { top: 100%; opacity: 0; }
   }
-
   .corner-tag {
     position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    background: rgba(255,255,255,0.9);
+    bottom: 1rem; left: 1rem;
+    background: rgba(255,255,255,0.92);
     border: 1px solid var(--border-bright);
     border-radius: 4px;
     padding: 0.4rem 0.75rem;
@@ -303,7 +267,6 @@
     color: var(--teal);
     letter-spacing: 0.1em;
   }
-
   .floating-chip {
     position: absolute;
     background: #ffffff;
@@ -315,22 +278,17 @@
     color: var(--text-muted);
     white-space: nowrap;
     animation: float 4s ease-in-out infinite;
-    box-shadow: 0 4px 16px rgba(155,109,214,0.1);
+    box-shadow: 0 4px 16px rgba(155,109,214,0.12);
   }
-
   .chip-1 { top: -1rem; right: 1.5rem; animation-delay: 0s; color: var(--teal); }
   .chip-2 { bottom: 3rem; right: -1.5rem; animation-delay: 1.5s; }
-
   @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-6px); }
   }
 
-  /* ─── SECTION HEADERS ─── */
-  .section-header {
-    margin-bottom: 3rem;
-  }
-
+  /* ── SECTION HEADERS ── */
+  .section-header { margin-bottom: 3rem; }
   .section-tag {
     font-family: var(--font-mono);
     font-size: 11px;
@@ -342,7 +300,6 @@
     align-items: center;
     gap: 0.75rem;
   }
-
   .section-tag::after {
     content: '';
     flex: 1;
@@ -350,7 +307,6 @@
     background: var(--border-bright);
     max-width: 60px;
   }
-
   h2 {
     font-family: var(--font-display);
     font-size: clamp(1.8rem, 3vw, 2.5rem);
@@ -358,7 +314,6 @@
     letter-spacing: -0.02em;
     line-height: 1.15;
   }
-
   h3 {
     font-family: var(--font-display);
     font-size: 1.2rem;
@@ -367,105 +322,79 @@
     margin-bottom: 0.75rem;
   }
 
-  /* ─── HARDWARE SECTION ─── */
+  /* ── HARDWARE ── */
   #hardware {
     padding: 7rem 0;
     border-top: 1px solid var(--border);
   }
-
   .hw-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 3rem;
   }
-
   .hw-photos {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
     gap: 0.75rem;
   }
-
   .hw-photo {
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid var(--border);
     position: relative;
   }
-
   .hw-photo img {
     width: 100%;
-    height: 160px;
+    height: 155px;
     object-fit: cover;
     display: block;
     filter: saturate(0.8);
     transition: filter 0.3s;
   }
-
   .hw-photo:hover img { filter: saturate(1); }
-
-  .hw-photo.wide {
-    grid-column: 1 / -1;
-  }
-
-  .hw-photo.wide img {
-    height: 200px;
-  }
-
+  .hw-photo.wide { grid-column: 1 / -1; }
+  .hw-photo.wide img { height: 200px; }
   .photo-label {
     position: absolute;
-    bottom: 0.5rem;
-    left: 0.5rem;
+    bottom: 0.5rem; left: 0.5rem;
     background: rgba(0,0,0,0.7);
     border-radius: 3px;
     padding: 0.2rem 0.5rem;
     font-family: var(--font-mono);
     font-size: 9px;
-    color: var(--text-muted);
+    color: #ccc;
     letter-spacing: 0.08em;
   }
-
   .hw-content { display: flex; flex-direction: column; justify-content: center; }
-
   .hw-content .section-header { margin-bottom: 1.5rem; }
-
   .component-list {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
-
   .component-item {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.75rem;
     font-size: 0.9rem;
     color: var(--text-muted);
+    line-height: 1.5;
   }
-
   .component-item .dot {
-    width: 6px;
-    height: 6px;
+    width: 6px; height: 6px;
     border-radius: 50%;
     background: var(--teal);
     flex-shrink: 0;
+    margin-top: 0.55rem;
   }
-
-  .component-item strong {
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  /* ─── HIGHLIGHT CARD ─── */
+  .component-item strong { color: var(--text); font-weight: 500; }
   .highlight-card {
-    background: linear-gradient(135deg, rgba(155,109,214,0.07), rgba(224,111,160,0.05));
+    background: linear-gradient(135deg, rgba(155,109,214,0.07), rgba(224,111,160,0.04));
     border: 1px solid rgba(155,109,214,0.2);
     border-radius: 10px;
-    padding: 1.5rem;
-    margin-top: 1.5rem;
+    padding: 1.25rem 1.5rem;
   }
-
   .highlight-card .card-label {
     font-family: var(--font-mono);
     font-size: 10px;
@@ -474,58 +403,32 @@
     text-transform: uppercase;
     margin-bottom: 0.5rem;
   }
-
   .highlight-card p {
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     color: var(--text-muted);
     line-height: 1.65;
   }
 
-  /* ─── INTERESTING COMPONENT ─── */
-  #component {
+  /* ── ARCH DIAGRAM (SYSTEM) ── */
+  #architecture {
     padding: 7rem 0;
     border-top: 1px solid var(--border);
-    background: linear-gradient(180deg, transparent 0%, rgba(155,109,214,0.03) 50%, transparent 100%);
+    background: linear-gradient(180deg, transparent 0%, rgba(155,109,214,0.03) 100%);
   }
-
-  .component-deep {
+  .arch-full {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1fr 1.6fr;
     gap: 4rem;
     align-items: start;
   }
-
-  .deep-content h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .deep-content .subtitle {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--teal);
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.05em;
-  }
-
-  .deep-content p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.8;
-    margin-bottom: 1.25rem;
-  }
-
-  /* Architecture diagram */
+  .arch-sidebar { position: sticky; top: 80px; }
   .arch-diagram {
     background: #ffffff;
     border: 1px solid var(--border-bright);
     border-radius: 10px;
     padding: 1.5rem;
-    position: sticky;
-    top: 80px;
     box-shadow: 0 4px 24px rgba(155,109,214,0.08);
   }
-
   .arch-title {
     font-family: var(--font-mono);
     font-size: 10px;
@@ -534,11 +437,7 @@
     text-transform: uppercase;
     margin-bottom: 1.25rem;
   }
-
-  .arch-layer {
-    margin-bottom: 0.75rem;
-  }
-
+  .arch-layer { margin-bottom: 0.75rem; }
   .arch-layer-label {
     font-family: var(--font-mono);
     font-size: 9px;
@@ -547,13 +446,7 @@
     text-transform: uppercase;
     margin-bottom: 0.4rem;
   }
-
-  .arch-nodes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-
+  .arch-nodes { display: flex; flex-wrap: wrap; gap: 0.4rem; }
   .arch-node {
     background: rgba(155,109,214,0.05);
     border: 1px solid var(--border);
@@ -564,28 +457,110 @@
     color: var(--text-muted);
     white-space: nowrap;
   }
-
   .arch-node.teal {
     background: var(--teal-dim);
     border-color: rgba(155,109,214,0.3);
     color: var(--teal);
   }
-
   .arch-node.amber {
     background: var(--amber-dim);
     border-color: rgba(224,111,160,0.3);
     color: var(--amber);
   }
-
   .arch-arrow {
     text-align: center;
     color: var(--teal);
     font-size: 14px;
-    margin: 0.3rem 0;
+    margin: 0.4rem 0;
     opacity: 0.6;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+  }
+  .arch-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
   }
 
-  /* code block */
+  /* ── NODE CARDS ── */
+  .node-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .node-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .node-card:hover {
+    border-color: rgba(155,109,214,0.25);
+    box-shadow: 0 4px 20px rgba(155,109,214,0.08);
+  }
+  .node-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .node-badge {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+  .node-badge.purple { background: var(--teal-dim); color: var(--teal); border: 1px solid rgba(155,109,214,0.2); }
+  .node-badge.pink { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(224,111,160,0.2); }
+  .node-badge.green { background: rgba(0,180,100,0.08); color: #00a060; border: 1px solid rgba(0,180,100,0.2); }
+  .node-card h3 { font-size: 1rem; margin-bottom: 0; flex: 1; }
+  .node-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; }
+  .topic-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+  .topic-pill {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    background: rgba(155,109,214,0.05);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.15rem 0.5rem;
+  }
+
+  /* ── INTERESTING COMPONENT DEEP DIVE ── */
+  #component {
+    padding: 7rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .component-deep {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .deep-content h3 { font-size: 1.4rem; margin-bottom: 0.4rem; }
+  .deep-content .subtitle {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--teal);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.04em;
+  }
+  .deep-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
   .code-block {
     background: #f5f0ff;
     border: 1px solid rgba(155,109,214,0.2);
@@ -594,33 +569,33 @@
     margin: 1.25rem 0;
     overflow-x: auto;
   }
-
   .code-block pre {
     font-family: var(--font-mono);
     font-size: 12px;
-    line-height: 1.7;
+    line-height: 1.75;
     color: #3a2460;
   }
-
   .code-block .kw { color: #c2185b; }
   .code-block .fn { color: #7b1fa2; }
   .code-block .str { color: #1565c0; }
   .code-block .cm { color: #9e8abf; font-style: italic; }
   .code-block .num { color: #6a1b9a; }
+  .code-block .var { color: #0d47a1; }
 
-  /* ─── EASE OF USE ─── */
+  .deep-sticky { position: sticky; top: 80px; }
+
+  /* ── EASE OF USE ── */
   #easeofuse {
     padding: 7rem 0;
     border-top: 1px solid var(--border);
+    background: linear-gradient(180deg, transparent 0%, rgba(155,109,214,0.025) 50%, transparent 100%);
   }
-
   .ease-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     margin-top: 3rem;
   }
-
   .ease-card {
     background: #ffffff;
     border: 1px solid var(--border);
@@ -628,12 +603,10 @@
     padding: 1.75rem;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
-
   .ease-card:hover {
     border-color: rgba(155,109,214,0.25);
     box-shadow: 0 4px 20px rgba(155,109,214,0.08);
   }
-
   .ease-card.featured {
     border-color: rgba(155,109,214,0.2);
     background: linear-gradient(135deg, rgba(155,109,214,0.04), #ffffff);
@@ -643,99 +616,201 @@
     gap: 2rem;
     align-items: center;
   }
-
   .ease-icon {
-    width: 36px;
-    height: 36px;
+    width: 36px; height: 36px;
     border-radius: 8px;
     background: var(--teal-dim);
-    border: 1px solid rgba(0,212,170,0.2);
+    border: 1px solid rgba(155,109,214,0.2);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
   }
+  .ease-icon svg { width: 18px; height: 18px; stroke: var(--teal); fill: none; }
+  .ease-card h3 { font-size: 1.05rem; margin-bottom: 0.5rem; }
+  .ease-card p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.7; }
 
-  .ease-icon svg {
-    width: 18px;
-    height: 18px;
-    stroke: var(--teal);
-    fill: none;
-  }
-
-  .ease-card h3 {
-    font-size: 1.05rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .ease-card p {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-    line-height: 1.7;
-  }
-
-  /* zone diagram */
-  .zone-diagram {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
+  .zone-diagram { display: flex; flex-direction: column; gap: 0.5rem; }
   .zone-row {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    padding: 0.6rem 0.85rem;
+    padding: 0.65rem 0.85rem;
     border-radius: 6px;
     border: 1px solid;
   }
-
-  .zone-row.green { background: rgba(0,212,170,0.05); border-color: rgba(0,212,170,0.2); }
+  .zone-row.green { background: rgba(0,180,100,0.05); border-color: rgba(0,180,100,0.2); }
   .zone-row.yellow { background: rgba(245,166,35,0.05); border-color: rgba(245,166,35,0.2); }
   .zone-row.red { background: rgba(220,50,50,0.05); border-color: rgba(220,50,50,0.2); }
-
-  .zone-dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .zone-row.green .zone-dot { background: var(--teal); }
-  .zone-row.yellow .zone-dot { background: var(--amber); }
+  .zone-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .zone-row.green .zone-dot { background: #00b464; }
+  .zone-row.yellow .zone-dot { background: #d4920e; }
   .zone-row.red .zone-dot { background: #dc3232; }
-
   .zone-info { flex: 1; }
-
-  .zone-name {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-  }
-
-  .zone-row.green .zone-name { color: var(--teal); }
-  .zone-row.yellow .zone-name { color: var(--amber); }
+  .zone-name { font-family: var(--font-mono); font-size: 11px; font-weight: 500; letter-spacing: 0.04em; }
+  .zone-row.green .zone-name { color: #00a050; }
+  .zone-row.yellow .zone-name { color: #c48000; }
   .zone-row.red .zone-name { color: #dc3232; }
+  .zone-desc { font-size: 12px; color: var(--text-dim); margin-top: 0.15rem; }
+  .zone-dist { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); white-space: nowrap; }
 
-  .zone-desc {
-    font-size: 12px;
-    color: var(--text-dim);
-    margin-top: 0.15rem;
+  .hyst-box {
+    margin-top: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    background: rgba(155,109,214,0.04);
+    border: 1px solid var(--border);
+    border-radius: 6px;
   }
+  .hyst-label { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); }
+  .hyst-vals { font-family: var(--font-mono); font-size: 11px; color: var(--teal); margin-top: 0.25rem; }
 
-  .zone-dist {
+  /* ── SIMULATION ── */
+  #simulation {
+    padding: 7rem 0;
+    border-top: 1px solid var(--border);
+  }
+  .sim-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  .sim-content p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+  .sim-features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  .sim-feature {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.1rem 1.25rem;
+  }
+  .sim-feature .sf-label {
     font-family: var(--font-mono);
-    font-size: 11px;
-    color: var(--text-dim);
-    white-space: nowrap;
+    font-size: 10px;
+    color: var(--teal);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
   }
+  .sim-feature p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .sim-visual {
+    background: #ffffff;
+    border: 1px solid var(--border-bright);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 4px 24px rgba(155,109,214,0.08);
+  }
+  .sim-title {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--text-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+  .ray-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .ray-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .ray-label { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); width: 60px; text-align: right; }
+  .ray-bar {
+    flex: 1;
+    height: 8px;
+    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    background: rgba(155,109,214,0.08);
+    border: 1px solid var(--border);
+  }
+  .ray-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+  }
+  .ray-dist { font-family: var(--font-mono); font-size: 10px; color: var(--text-dim); width: 36px; }
+  .ray-row.clear .ray-fill { background: #00b464; }
+  .ray-row.warn .ray-fill { background: #d4920e; }
+  .ray-row.danger .ray-fill { background: #dc3232; }
 
-  /* ─── RESULTS ─── */
+  /* ── MIGRATION ── */
+  #migration {
+    padding: 7rem 0;
+    border-top: 1px solid var(--border);
+    background: linear-gradient(180deg, transparent 0%, rgba(224,111,160,0.02) 100%);
+  }
+  .migration-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-top: 2.5rem;
+    position: relative;
+  }
+  .migration-timeline::before {
+    content: '';
+    position: absolute;
+    left: 2.25rem;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: var(--border-bright);
+  }
+  .mig-step {
+    display: flex;
+    gap: 1.5rem;
+    padding-bottom: 2rem;
+    position: relative;
+  }
+  .mig-step:last-child { padding-bottom: 0; }
+  .mig-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid var(--border-bright);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--teal);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .mig-body { flex: 1; padding-top: 0.6rem; }
+  .mig-body h4 {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .mig-body p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.65; }
+
+  /* ── RESULTS ── */
   #results {
     padding: 7rem 0;
     border-top: 1px solid var(--border);
   }
-
   .results-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -746,13 +821,11 @@
     overflow: hidden;
     margin-bottom: 3rem;
   }
-
   .result-item {
     background: #ffffff;
     padding: 2rem 1.5rem;
     text-align: center;
   }
-
   .result-num {
     font-family: var(--font-display);
     font-size: 2.5rem;
@@ -761,7 +834,6 @@
     line-height: 1;
     margin-bottom: 0.4rem;
   }
-
   .result-label {
     font-family: var(--font-mono);
     font-size: 10px;
@@ -769,7 +841,6 @@
     text-transform: uppercase;
     letter-spacing: 0.1em;
   }
-
   .award-banner {
     background: linear-gradient(135deg, rgba(245,166,35,0.08), var(--amber-dim));
     border: 1px solid rgba(245,166,35,0.25);
@@ -779,37 +850,21 @@
     align-items: center;
     gap: 1.5rem;
   }
+  .award-icon { font-size: 2rem; flex-shrink: 0; }
+  .award-text h3 { font-size: 1rem; color: var(--amber); margin-bottom: 0.25rem; }
+  .award-text p { font-size: 0.875rem; color: var(--text-muted); }
 
-  .award-icon {
-    font-size: 2rem;
-    flex-shrink: 0;
-  }
-
-  .award-text h3 {
-    font-size: 1rem;
-    color: var(--amber);
-    margin-bottom: 0.25rem;
-  }
-
-  .award-text p {
-    font-size: 0.875rem;
-    color: var(--text-muted);
-  }
-
-  /* ─── WINDBORNE ALIGNMENT ─── */
+  /* ── WINDBORNE ALIGNMENT ── */
   #windborne {
     padding: 7rem 0;
     border-top: 1px solid var(--border);
-    background: linear-gradient(180deg, transparent 0%, rgba(0,212,170,0.015) 100%);
   }
-
   .alignment-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 3rem;
   }
-
   .alignment-card {
     background: var(--panel);
     border: 1px solid var(--border);
@@ -819,12 +874,10 @@
     overflow: hidden;
     transition: border-color 0.2s, transform 0.2s;
   }
-
   .alignment-card:hover {
-    border-color: rgba(0,212,170,0.2);
+    border-color: rgba(155,109,214,0.25);
     transform: translateY(-2px);
   }
-
   .alignment-card::before {
     content: '';
     position: absolute;
@@ -834,16 +887,13 @@
     opacity: 0;
     transition: opacity 0.2s;
   }
-
   .alignment-card:hover::before { opacity: 1; }
-
   .align-num {
     font-family: var(--font-mono);
     font-size: 10px;
     color: var(--text-dim);
     margin-bottom: 0.75rem;
   }
-
   .align-skill {
     font-family: var(--font-display);
     font-size: 0.95rem;
@@ -851,30 +901,27 @@
     color: var(--text);
     margin-bottom: 0.25rem;
   }
-
   .align-wb {
     font-family: var(--font-mono);
     font-size: 10px;
     color: var(--teal);
     margin-bottom: 0.75rem;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
   }
-
   .align-desc {
     font-size: 0.85rem;
     color: var(--text-muted);
     line-height: 1.65;
   }
 
-  /* ─── CONTACT ─── */
+  /* ── CONTACT ── */
   #contact {
     padding: 6rem 0;
     border-top: 1px solid var(--border);
     text-align: center;
   }
-
   #contact h2 { margin-bottom: 1rem; }
-  #contact p {
+  #contact > .container > p {
     color: var(--text-muted);
     font-size: 1rem;
     margin-bottom: 2.5rem;
@@ -882,15 +929,13 @@
     margin-left: auto;
     margin-right: auto;
   }
-
   .contact-links {
     display: flex;
     justify-content: center;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
   }
-
   .contact-chip {
     display: flex;
     align-items: center;
@@ -905,17 +950,8 @@
     text-decoration: none;
     transition: all 0.2s;
   }
-
-  .contact-chip:hover {
-    border-color: var(--teal);
-    color: var(--teal);
-  }
-
-  .contact-chip svg {
-    width: 14px; height: 14px;
-    stroke: currentColor;
-    fill: none;
-  }
+  .contact-chip:hover { border-color: var(--teal); color: var(--teal); }
+  .contact-chip svg { width: 14px; height: 14px; stroke: currentColor; fill: none; }
 
   .footer {
     border-top: 1px solid var(--border);
@@ -927,27 +963,20 @@
     letter-spacing: 0.1em;
   }
 
-  /* ─── ANIMATIONS ─── */
+  /* ── ANIMATIONS ── */
   .fade-up {
     opacity: 0;
     transform: translateY(24px);
     transition: opacity 0.6s ease, transform 0.6s ease;
   }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-  .fade-up.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* ─── RESPONSIVE ─── */
+  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    .hero-inner { grid-template-columns: 1fr; }
-    .hw-grid { grid-template-columns: 1fr; }
-    .component-deep { grid-template-columns: 1fr; }
-    .ease-grid { grid-template-columns: 1fr; }
+    .hero-inner, .hw-grid, .component-deep, .ease-grid, .arch-full,
+    .sim-grid, .sim-features, .results-grid, .alignment-grid { grid-template-columns: 1fr; }
     .ease-card.featured { grid-template-columns: 1fr; }
     .results-grid { grid-template-columns: repeat(2, 1fr); }
-    .alignment-grid { grid-template-columns: 1fr; }
     .nav-links { display: none; }
     .chip-2 { display: none; }
   }
@@ -962,6 +991,7 @@
   <div class="nav-logo">sfm.portfolio</div>
   <ul class="nav-links">
     <li><a href="#hardware">Hardware</a></li>
+    <li><a href="#architecture">Stack</a></li>
     <li><a href="#component">Deep Dive</a></li>
     <li><a href="#easeofuse">Design</a></li>
     <li><a href="#results">Results</a></li>
@@ -978,13 +1008,13 @@
         <div class="hero-label">Engineering Screen — WindBorne Systems</div>
         <h1>Semi-Autonomous<br><span>Wheelchair</span><br>Navigation</h1>
         <p class="hero-sub">
-          A donated power wheelchair rebuilt into a fully sensor-fused autonomous platform — running ROS2, custom firmware, and real-time 3D perception. Built from first principles at Widener University.
+          A donated power wheelchair from the Mary Campbell Center rebuilt into a fully sensor-fused autonomous platform — running ROS2, custom firmware, real-time 3D perception, and MATLAB-validated obstacle avoidance. Built from scratch at Widener University.
         </p>
 
         <div class="hero-stats">
           <div class="stat">
-            <div class="stat-num">6</div>
-            <div class="stat-label">Sensors</div>
+            <div class="stat-num">7</div>
+            <div class="stat-label">Components</div>
           </div>
           <div class="stat">
             <div class="stat-num">20Hz</div>
@@ -1005,12 +1035,12 @@
       <div class="hero-visual fade-up" style="transition-delay:0.2s">
         <div class="floating-chip chip-1">▲ NVIDIA Orin Nano</div>
         <div class="hero-img-wrap">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=80" alt="Hardware electronics board with sensors">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&q=80" alt="Hardware electronics sensor array">
           <div class="hero-img-overlay"></div>
           <div class="scan-line"></div>
-          <div class="corner-tag">LIVE SENSOR FUSION</div>
+          <div class="corner-tag">LIVE SENSOR FUSION · ROS2</div>
         </div>
-        <div class="floating-chip chip-2">ROS2 · Python · C++</div>
+        <div class="floating-chip chip-2">ROS2 · Python · MATLAB</div>
       </div>
     </div>
   </div>
@@ -1022,16 +1052,16 @@
     <div class="hw-grid">
       <div class="hw-photos fade-up">
         <div class="hw-photo wide">
-          <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80" alt="Full wheelchair system with mounted sensors and compute">
-          <div class="photo-label">Full build — NVIDIA Orin Nano + sensor array</div>
+          <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&q=80" alt="Full wheelchair sensor array with NVIDIA Orin Nano">
+          <div class="photo-label">Full build — NVIDIA Orin Nano + dual RPLidar + Pico Flexx</div>
         </div>
         <div class="hw-photo">
-          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80" alt="ESP32 + BNO08x IMU breadboard">
-          <div class="photo-label">ESP32 + BNO08x IMU</div>
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80" alt="ESP32 + BNO08x IMU on breadboard">
+          <div class="photo-label">ESP32 + BNO08x IMU on breadboard</div>
         </div>
         <div class="hw-photo">
-          <img src="https://images.unsplash.com/photo-1601132359864-c974e79890ac?w=400&q=80" alt="LiDAR sensor mounted to frame">
-          <div class="photo-label">RPLidar A1M8 — 2D scan</div>
+          <img src="https://images.unsplash.com/photo-1601132359864-c974e79890ac?w=400&q=80" alt="RPLidar A1M8 mounted to frame">
+          <div class="photo-label">RPLidar A1M8 ×2 — 2D 360° scan</div>
         </div>
       </div>
 
@@ -1041,83 +1071,38 @@
           <h2>The Platform</h2>
         </div>
         <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;margin-bottom:1.5rem;">
-          Starting from a donated electric wheelchair from the Mary Campbell Center, I designed and wired a complete autonomous perception stack — from 12V lithium power distribution through edge compute to sensor drivers.
+          Starting from a donated electric wheelchair from the Mary Campbell Center, I designed and wired a complete autonomous perception stack — from 12V lithium power distribution through edge compute to every sensor driver, written from the SDK up.
         </p>
 
         <div class="component-list">
-          <div class="component-item"><div class="dot"></div><strong>NVIDIA Orin Nano</strong> — edge inference &amp; ROS2 host</div>
-          <div class="component-item"><div class="dot"></div><strong>Pico Flexx</strong> — 3D depth camera, PMD ToF</div>
-          <div class="component-item"><div class="dot"></div><strong>RPLidar A1M8 ×2</strong> — dual 2D scanning, 360°</div>
-          <div class="component-item"><div class="dot"></div><strong>BNO08x IMU</strong> — 9-DOF orientation + gyro</div>
-          <div class="component-item"><div class="dot"></div><strong>HC-SR04 ×4</strong> — ultrasonic near-field ranging</div>
-          <div class="component-item"><div class="dot"></div><strong>ESP32</strong> — MCU bridge, custom serial protocol</div>
-          <div class="component-item"><div class="dot"></div><strong>MCP4728 DAC + CD4066</strong> — motor control interface</div>
+          <div class="component-item"><div class="dot"></div><strong>NVIDIA Orin Nano</strong> — edge inference &amp; ROS2 host, runs all sensor nodes</div>
+          <div class="component-item"><div class="dot"></div><strong>Pico Flexx (PMD ToF)</strong> — 3D depth camera, streams point cloud at ~30 Hz via roypy SDK</div>
+          <div class="component-item"><div class="dot"></div><strong>RPLidar A1M8 ×2</strong> — dual 2D spinning LiDAR for 360° environmental coverage</div>
+          <div class="component-item"><div class="dot"></div><strong>BNO08x IMU</strong> — 9-DOF, provides orientation quaternion + gyro yaw rate to ROS2</div>
+          <div class="component-item"><div class="dot"></div><strong>HC-SR04 ×4</strong> — ultrasonic near-field ranging (FL, FR, BL, BR), each published as PointCloud2</div>
+          <div class="component-item"><div class="dot"></div><strong>ESP32</strong> — MCU sensor hub; runs custom serial framing protocol bridging sensors to ROS2</div>
+          <div class="component-item"><div class="dot"></div><strong>MCP4728 DAC + CD4066 analog switch</strong> — motor control interface from compute to drive electronics</div>
         </div>
 
         <div class="highlight-card">
           <div class="card-label">Power architecture</div>
-          <p>Two 12V 54Ah Dakota Lithium batteries feed a circuit breaker, then a DC-DC converter steps to 5V for the compute stack. All wiring and electrical housing designed and routed by hand.</p>
+          <p>Two 12V 54Ah Dakota Lithium batteries feed a circuit breaker, then a DC-DC converter steps down to 5V for the compute stack. All wiring, electrical housing, and cable routing designed and built by hand.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- INTERESTING COMPONENT DEEP DIVE -->
-<section id="component">
+<!-- SYSTEM ARCHITECTURE -->
+<section id="architecture">
   <div class="container">
     <div class="section-header fade-up" style="text-align:center;max-width:600px;margin:0 auto 4rem;">
-      <div class="section-tag" style="justify-content:center;">02 — Interesting Component</div>
-      <h2>The ESP32 Hardware Bridge<br>&amp; Custom Serial Protocol</h2>
+      <div class="section-tag" style="justify-content:center;">02 — Software Stack</div>
+      <h2>Full-Stack Sensor Pipeline</h2>
     </div>
 
-    <div class="component-deep">
-      <div class="deep-content fade-up">
-        <h3>Operating Principle</h3>
-        <div class="subtitle">ESP32 → ROS2 · UART · Custom framed protocol · Gyro-merge trick</div>
-
-        <p>
-          The most technically interesting component I built is the <strong style="color:var(--text)">ESP32Bridge</strong> — a custom hardware abstraction layer that translates raw microcontroller sensor data into properly typed ROS2 messages. Off-the-shelf serial parsers couldn't handle the heterogeneous mix of IMU quaternions, gyro rates, and ultrasonic distances I needed to multiplex over a single UART link.
-        </p>
-
-        <p>
-          I designed a lightweight framing protocol using angle-bracket delimiters and prefix tags. Each message type is self-identifying — the parser routes on the prefix string and never needs to track state across frames. This makes the protocol trivially extensible: adding a new sensor type is just a new prefix.
-        </p>
-
-        <div class="code-block">
-<pre><span class="cm"># Wire format — self-framing, prefix-routed</span>
-<span class="str">&lt;IMU_Q, 0.12, 0.45, 0.78, 0.32&gt;</span>  <span class="cm">← orientation quaternion</span>
-<span class="str">&lt;IMU_G, 0.042&gt;</span>                    <span class="cm">← gyro rotation rate</span>
-<span class="str">&lt;US, 45, 23, 67, 12&gt;</span>             <span class="cm">← 4 ultrasonic distances (cm)</span></pre>
-        </div>
-
-        <p>
-          The most elegant problem I solved was the <strong style="color:var(--text)">gyro-merge trick</strong>. ROS2's <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">sensor_msgs/Imu</code> requires orientation and angular velocity in a single message — but the ESP32 sends them as separate frames to minimize packet size. My node buffers the latest <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">gyro_z</code> value and stamps it onto the next quaternion frame before publishing. Zero data loss, no extra bandwidth.
-        </p>
-
-        <div class="code-block">
-<pre><span class="kw">if</span> prefix == <span class="str">"IMU_G"</span>:
-    self._gyro_z = <span class="fn">float</span>(parts[<span class="num">1</span>])  <span class="cm"># buffer it</span>
-<span class="kw">elif</span> prefix == <span class="str">"IMU_Q"</span>:
-    imu_msg.angular_velocity.z = self._gyro_z  <span class="cm"># attach</span>
-    self.imu_pub.<span class="fn">publish</span>(imu_msg)
-<span class="kw">elif</span> prefix == <span class="str">"US"</span>:
-    <span class="cm"># Each distance → a single 3D point for SLAM</span>
-    cloud = pc2.<span class="fn">create_cloud_xyz32</span>(
-        header, [[dist_m, <span class="num">0.0</span>, <span class="num">0.0</span>]]
-    )</pre>
-        </div>
-
-        <p>
-          The ultrasonic-to-PointCloud2 conversion is another choice worth noting: rather than writing a custom message type, I map each distance reading to a single 3D point <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">[dist, 0, 0]</code> and let ROS2's transform system rotate it into the correct world frame. The perception pipeline sees it as just another point cloud — no special casing required.
-        </p>
-
-        <p style="color:var(--text-muted);">
-          This component directly demonstrates the kind of low-level sensor integration work WindBorne does — custom drivers, calibration logic, and data pipelines for instruments that need to work reliably in harsh, uncontrolled environments.
-        </p>
-      </div>
-
-      <div class="fade-up" style="transition-delay:0.15s">
+    <div class="arch-full">
+      <div class="arch-sidebar fade-up">
         <div class="arch-diagram">
           <div class="arch-title">System architecture</div>
 
@@ -1131,30 +1116,42 @@
             </div>
           </div>
 
-          <div class="arch-arrow">↓ UART</div>
+          <div class="arch-arrow">↓ UART · Serial</div>
 
           <div class="arch-layer">
             <div class="arch-layer-label">MCU Bridge</div>
             <div class="arch-nodes">
               <div class="arch-node teal">ESP32Bridge</div>
-              <div class="arch-node teal">Custom Serial Protocol</div>
+              <div class="arch-node teal">Custom &lt;PREFIX,…&gt; protocol</div>
             </div>
           </div>
 
           <div class="arch-arrow">↓ ROS2 Topics</div>
 
           <div class="arch-layer">
-            <div class="arch-layer-label">ROS2 Drivers</div>
+            <div class="arch-layer-label">ROS2 Driver Nodes</div>
             <div class="arch-nodes">
-              <div class="arch-node">/imu_data</div>
-              <div class="arch-node">/ultrasonic</div>
-              <div class="arch-node">/flexx2/points</div>
-              <div class="arch-node">/rplidarpc_left</div>
-              <div class="arch-node">/rplidarpc_right</div>
+              <div class="arch-node">FlexxCameraNode</div>
+              <div class="arch-node">RPLidarPublisher</div>
+              <div class="arch-node">UltrasonicPointCloud</div>
+              <div class="arch-node">ESP32Bridge</div>
             </div>
           </div>
 
-          <div class="arch-arrow">↓ 20Hz fusion</div>
+          <div class="arch-arrow">↓ PointCloud2 · Imu</div>
+
+          <div class="arch-layer">
+            <div class="arch-layer-label">ROS2 Message Bus</div>
+            <div class="arch-nodes">
+              <div class="arch-node">/flexx2/points</div>
+              <div class="arch-node">/rplidarpc_left</div>
+              <div class="arch-node">/rplidarpc_right</div>
+              <div class="arch-node">/ultrasonic/*</div>
+              <div class="arch-node">/imu_data</div>
+            </div>
+          </div>
+
+          <div class="arch-arrow">↓ 20 Hz fusion</div>
 
           <div class="arch-layer">
             <div class="arch-layer-label">Navigation Brain</div>
@@ -1168,8 +1165,206 @@
           <div class="arch-layer">
             <div class="arch-layer-label">Output</div>
             <div class="arch-nodes">
-              <div class="arch-node">cmd_vel → motors</div>
+              <div class="arch-node">cmd_vel → MCP4728 DAC → motors</div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade-up" style="transition-delay:0.15s">
+        <div class="arch-content">
+          <p>Every ROS2 node in this stack was written from scratch — not pulled from a tutorial. The pipeline converts raw hardware signals into typed ROS2 messages, runs real-time fusion, and outputs velocity commands to the motor controller. I wrote four different versions of the LiDAR driver alone as I iterated through issues with angle conventions, coordinate frames, and dual-sensor splitting.</p>
+          <p>I also shipped both a ROS1 and ROS2 version of the PMD depth camera node, migrating from the <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy</code>-based <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">DualPicoSubscriberNode</code> to the ROS2 <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">FlexxCameraNode</code> — maintaining identical topic names across versions to keep the downstream navigation stack unaware of the migration.</p>
+        </div>
+
+        <div class="node-cards">
+          <div class="node-card">
+            <div class="node-card-header">
+              <div class="node-badge purple">ROS2 · Python</div>
+              <h3>dual_rplidar_node.py</h3>
+            </div>
+            <p>Connects to two RPLidar A1M8s over serial (<code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">/dev/lidar_left</code>, <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">/dev/lidar_right</code>), one thread per sensor. Negates raw angles to flip from CW to CCW, applies per-sensor FOV gating (0°–180° / 180°–360°), converts polar → Cartesian, and publishes <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">PointCloud2</code>. Includes auto-reconnect on serial drop.</p>
+            <div class="topic-pills">
+              <span class="topic-pill">/rplidarpc_left</span>
+              <span class="topic-pill">/rplidarpc_right</span>
+              <span class="topic-pill">angle negation</span>
+              <span class="topic-pill">FOV gate</span>
+              <span class="topic-pill">auto-reconnect</span>
+            </div>
+          </div>
+
+          <div class="node-card">
+            <div class="node-card-header">
+              <div class="node-badge purple">ROS2 · roypy SDK</div>
+              <h3>flexx2_camera_node.py</h3>
+            </div>
+            <p>Direct hardware driver for the pmd Flexx2 via the Royale SDK. Registers a <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">FlexxListener</code> callback, queues frames asynchronously, transforms from Royale frame (X=right, Y=down, Z=forward) to ROS base_link (X=forward, Y=left, Z=up), then filters a 0.2–1.0m × ±0.3m detection box and publishes cleared/blocked status based on point density threshold (&gt;50 points).</p>
+            <div class="topic-pills">
+              <span class="topic-pill">/flexx2/points</span>
+              <span class="topic-pill">/flexx2/filtered_points</span>
+              <span class="topic-pill">/flexx2/detection_status</span>
+              <span class="topic-pill">coord transform</span>
+            </div>
+          </div>
+
+          <div class="node-card">
+            <div class="node-card-header">
+              <div class="node-badge green">ROS2 · Serial UART</div>
+              <h3>esp32_bridge_node.py</h3>
+            </div>
+            <p>Serial bridge running a background thread that reads framed messages from the ESP32. Routes on prefix tag: <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">IMU_G</code> buffers gyro-Z, <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">IMU_Q</code> merges quaternion + buffered gyro into a single <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">sensor_msgs/Imu</code>, and <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">US</code> publishes four ultrasonic readings as <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">Int32MultiArray</code>.</p>
+            <div class="topic-pills">
+              <span class="topic-pill">/imu_data</span>
+              <span class="topic-pill">/ultrasonic</span>
+              <span class="topic-pill">gyro-merge trick</span>
+              <span class="topic-pill">prefix routing</span>
+            </div>
+          </div>
+
+          <div class="node-card">
+            <div class="node-card-header">
+              <div class="node-badge pink">ROS2 · PointCloud2</div>
+              <h3>ultrasonic_pointcloud_node.py</h3>
+            </div>
+            <p>Converts the raw <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">Int32MultiArray</code> (cm) from the ESP32 bridge into per-sensor <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">PointCloud2</code> messages. Each reading becomes a single 3D point at <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">[distance_m, 0, 0]</code> in that sensor's URDF frame — the TF tree in <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">robot_state_publisher</code> handles rotation into the world frame automatically. Invalid (≤0) or sub-min-range readings are dropped, not published.</p>
+            <div class="topic-pills">
+              <span class="topic-pill">/ultrasonic/front_left</span>
+              <span class="topic-pill">/ultrasonic/front_right</span>
+              <span class="topic-pill">/ultrasonic/back_left</span>
+              <span class="topic-pill">/ultrasonic/back_right</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERESTING COMPONENT DEEP DIVE -->
+<section id="component">
+  <div class="container">
+    <div class="section-header fade-up" style="text-align:center;max-width:600px;margin:0 auto 4rem;">
+      <div class="section-tag" style="justify-content:center;">03 — Interesting Component</div>
+      <h2>The ESP32 Hardware Bridge<br>&amp; Custom Serial Protocol</h2>
+    </div>
+
+    <div class="component-deep">
+      <div class="deep-content fade-up">
+        <h3>Operating Principle</h3>
+        <div class="subtitle">ESP32 → ROS2 · UART 115200 · Prefix-routed framing · Gyro-merge trick</div>
+
+        <p>
+          The most technically interesting component I built is the <strong style="color:var(--text)">ESP32Bridge</strong> — a custom hardware abstraction layer that translates raw microcontroller sensor data into properly typed ROS2 messages over a single UART link. Off-the-shelf serial parsers couldn't handle the heterogeneous mix of IMU quaternions, gyro rates, and four ultrasonic distances I needed to multiplex simultaneously.
+        </p>
+
+        <p>
+          I designed a lightweight framing protocol using angle-bracket delimiters and prefix tags. Each message is self-identifying — the receiver routes on the prefix string and never needs to track state across frames. This makes the protocol trivially extensible: adding a new sensor is just a new prefix.
+        </p>
+
+        <div class="code-block">
+<pre><span class="cm"># Wire format — self-framing, prefix-routed</span>
+<span class="str">&lt;IMU_Q, 0.12, 0.45, 0.78, 0.32&gt;</span>  <span class="cm">← orientation quaternion (x,y,z,w)</span>
+<span class="str">&lt;IMU_G, 0.042&gt;</span>                    <span class="cm">← yaw rate from gyro (rad/s)</span>
+<span class="str">&lt;US, 45, 23, 67, 12&gt;</span>             <span class="cm">← 4 ultrasonic distances in cm</span></pre>
+        </div>
+
+        <p>
+          The most elegant problem I solved here is the <strong style="color:var(--text)">gyro-merge trick</strong>. ROS2's <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">sensor_msgs/Imu</code> requires orientation and angular velocity in a single message — but the ESP32 sends them as separate frames to minimize packet size and keep firmware simple. My bridge node buffers the latest <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">gyro_z</code> value and stamps it onto the next quaternion frame before publishing. The result is a clean, complete IMU message with zero data loss and no extra bandwidth.
+        </p>
+
+        <div class="code-block">
+<pre><span class="kw">elif</span> prefix == <span class="str">"IMU_G"</span>:
+    <span class="cm"># Buffer gyro-Z — merged on next quaternion frame</span>
+    self._gyro_z = <span class="fn">float</span>(parts[<span class="num">1</span>])
+
+<span class="kw">elif</span> prefix == <span class="str">"IMU_Q"</span>:
+    imu_msg.<span class="var">orientation</span>.x = <span class="fn">float</span>(parts[<span class="num">1</span>])
+    imu_msg.<span class="var">orientation</span>.y = <span class="fn">float</span>(parts[<span class="num">2</span>])
+    imu_msg.<span class="var">orientation</span>.z = <span class="fn">float</span>(parts[<span class="num">3</span>])
+    imu_msg.<span class="var">orientation</span>.w = <span class="fn">float</span>(parts[<span class="num">4</span>])
+    <span class="cm"># Attach buffered gyro — one complete Imu message</span>
+    imu_msg.<span class="var">angular_velocity</span>.z = self._gyro_z
+    self.imu_pub.<span class="fn">publish</span>(imu_msg)
+
+<span class="kw">elif</span> prefix == <span class="str">"US"</span>:
+    msg.<span class="var">data</span> = [<span class="fn">int</span>(parts[<span class="num">1</span>]), <span class="fn">int</span>(parts[<span class="num">2</span>]),
+               <span class="fn">int</span>(parts[<span class="num">3</span>]), <span class="fn">int</span>(parts[<span class="num">4</span>])]
+    self.ultrasonic_pub.<span class="fn">publish</span>(msg)</pre>
+        </div>
+
+        <p>
+          The covariance matrices in the published <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">Imu</code> message are carefully set: X/Y angular velocity and all linear acceleration terms are marked with <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">99999.0</code> (effectively infinite uncertainty), which signals any downstream EKF to ignore those axes. Only yaw rate and orientation quaternion are trusted. This prevents a noisy or absent accelerometer from polluting localization.
+        </p>
+
+        <p>
+          The ultrasonic-to-PointCloud2 conversion in the companion node is another key design choice: rather than writing a custom message type, I map each distance reading to a single 3D point <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">[dist_m, 0, 0]</code> published in that sensor's URDF frame. The TF tree in <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">robot_state_publisher</code> rotates it into world coordinates automatically — the navigation stack sees it as just another point cloud, no special casing required.
+        </p>
+
+        <p style="color:var(--text-muted);">
+          This component is directly analogous to WindBorne's sensor manufacturing pipeline: custom communication protocols, careful handling of timing artifacts, covariance modeling for sensor trust, and designing data pipelines that are simple enough to be reliable in the field.
+        </p>
+      </div>
+
+      <div class="deep-sticky fade-up" style="transition-delay:0.15s">
+        <div class="arch-diagram">
+          <div class="arch-title">ESP32 Bridge data flow</div>
+
+          <div class="arch-layer">
+            <div class="arch-layer-label">Firmware (Arduino IDE)</div>
+            <div class="arch-nodes">
+              <div class="arch-node">BNO08x → quaternion + gyro</div>
+              <div class="arch-node">HC-SR04 ×4 → distances (cm)</div>
+            </div>
+          </div>
+
+          <div class="arch-arrow">↓ UART 115200 baud</div>
+
+          <div class="arch-layer">
+            <div class="arch-layer-label">Serial framing</div>
+            <div class="arch-nodes">
+              <div class="arch-node teal">&lt;IMU_G, gyro_z&gt;</div>
+              <div class="arch-node teal">&lt;IMU_Q, x, y, z, w&gt;</div>
+              <div class="arch-node teal">&lt;US, FL, FR, BL, BR&gt;</div>
+            </div>
+          </div>
+
+          <div class="arch-arrow">↓ Background thread · readline()</div>
+
+          <div class="arch-layer">
+            <div class="arch-layer-label">Prefix router</div>
+            <div class="arch-nodes">
+              <div class="arch-node">IMU_G → buffer _gyro_z</div>
+              <div class="arch-node">IMU_Q → merge + publish Imu</div>
+              <div class="arch-node">US → Int32MultiArray</div>
+            </div>
+          </div>
+
+          <div class="arch-arrow">↓ ROS2 publish</div>
+
+          <div class="arch-layer">
+            <div class="arch-layer-label">ROS2 topics</div>
+            <div class="arch-nodes">
+              <div class="arch-node amber">/imu_data</div>
+              <div class="arch-node amber">/ultrasonic</div>
+            </div>
+          </div>
+
+          <div class="arch-arrow">↓ consumed by</div>
+
+          <div class="arch-layer">
+            <div class="arch-layer-label">Downstream</div>
+            <div class="arch-nodes">
+              <div class="arch-node">UltrasonicPointCloud</div>
+              <div class="arch-node">SensorAvoidance</div>
+              <div class="arch-node">EKF / localization</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:1.25rem;">
+          <div class="highlight-card">
+            <div class="card-label">Why one UART link?</div>
+            <p>Multiplexing all sensors over a single serial port keeps wiring simple and the bridge firmware stateless. The prefix tag makes each message self-describing — there is no fragile byte-count or checksum to maintain. The ROS2 node validates the outer angle-bracket framing and silently drops malformed lines.</p>
           </div>
         </div>
       </div>
@@ -1181,23 +1376,22 @@
 <section id="easeofuse">
   <div class="container">
     <div class="section-header fade-up">
-      <div class="section-tag">03 — Design for Ease of Use</div>
+      <div class="section-tag">04 — Design for Ease of Use</div>
       <h2>3-Zone Obstacle Avoidance<br>with Hysteresis</h2>
     </div>
 
     <div class="ease-grid">
-      <!-- Featured card -->
       <div class="ease-card featured fade-up">
         <div>
           <div class="ease-icon">
             <svg viewBox="0 0 24 24" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
           </div>
-          <h3>Why hysteresis is the key design choice</h3>
+          <h3>Why hysteresis is the critical design choice</h3>
           <p>
-            Without hysteresis, obstacle avoidance systems oscillate — the wheelchair spins back and forth at a threshold boundary, confusing and alarming users. I solved this with two asymmetric thresholds: avoidance <em>activates</em> at 20 cm but only <em>clears</em> at 35 cm. This 15 cm dead-band means the system commits to an action before reversing it, giving smooth, predictable behavior at the cost of a tiny bit of conservatism.
+            Without hysteresis, obstacle avoidance systems oscillate — the wheelchair spins back and forth at a threshold boundary, which is disorienting and alarming to a user with a disability. I solved this with two deliberately asymmetric thresholds: avoidance <em>activates</em> at 20 cm but only <em>clears</em> at 35 cm. This 15 cm dead-band means the system commits to an evasion action before reversing it, producing smooth, predictable behavior.
           </p>
           <p style="margin-top:0.75rem;">
-            This is the difference between a system that technically works and one a person with a disability would actually trust. Every design choice in the navigation layer prioritized behavioral predictability over raw performance.
+            The rotation direction is also chosen algorithmically: the node computes <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">left_clear</code> and <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">right_clear</code> by taking the minimum distance from the LiDAR and depth camera on each side, then rotates toward whichever half-space has more room. Users consistently get turned toward open space, not toward a wall.
           </p>
         </div>
         <div class="zone-diagram">
@@ -1206,7 +1400,7 @@
             <div class="zone-dot"></div>
             <div class="zone-info">
               <div class="zone-name">ZONE 1 — Clear</div>
-              <div class="zone-desc">Full speed · proportional heading</div>
+              <div class="zone-desc">Full speed · proportional heading control</div>
             </div>
             <div class="zone-dist">&gt; 1.2 m</div>
           </div>
@@ -1214,7 +1408,7 @@
             <div class="zone-dot"></div>
             <div class="zone-info">
               <div class="zone-name">ZONE 2 — Caution</div>
-              <div class="zone-desc">Reduced speed · turn to clearer side</div>
+              <div class="zone-desc">Reduced speed · turn toward clearer side</div>
             </div>
             <div class="zone-dist">0.55 – 1.2 m</div>
           </div>
@@ -1226,9 +1420,9 @@
             </div>
             <div class="zone-dist">&lt; 0.55 m</div>
           </div>
-          <div style="margin-top:0.75rem;padding:0.6rem 0.85rem;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:6px;">
-            <div style="font-family:var(--font-mono);font-size:10px;color:var(--text-dim);">Hysteresis thresholds</div>
-            <div style="font-family:var(--font-mono);font-size:11px;color:var(--teal);margin-top:0.3rem;">ACTIVATE: 20 cm · CLEAR: 35 cm</div>
+          <div class="hyst-box">
+            <div class="hyst-label">Hysteresis thresholds</div>
+            <div class="hyst-vals">ACTIVATE: 20 cm · CLEAR: 35 cm · dead-band: 15 cm</div>
           </div>
         </div>
       </div>
@@ -1237,9 +1431,9 @@
         <div class="ease-icon">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </div>
-        <h3>Sensor fusion, not sensor priority</h3>
+        <h3>Sensor fusion — minimum-distance across all sources</h3>
         <p>
-          Rather than trusting a single sensor, the node subscribes to all five data streams (2× LiDAR, 2× depth camera, 4× ultrasonic) and takes the minimum distance per zone. Any sensor detecting danger triggers the response. This means a sensor dropout doesn't create a blindspot — it just means slightly less coverage.
+          The <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> node subscribes to all five data streams: <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/rplidarpc_left</code>, <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/rplidarpc_right</code>, <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/flexx2/filtered_points</code>, and all four ultrasonic point clouds. For each zone it takes the minimum distance across all active sensors. Any one sensor detecting danger triggers the response — a sensor dropout just means slightly reduced coverage, not a blind spot.
         </p>
       </div>
 
@@ -1247,9 +1441,9 @@
         <div class="ease-icon">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
         </div>
-        <h3>RViz live visualization</h3>
+        <h3>RViz live visualization — all streams simultaneously</h3>
         <p>
-          Real-time point cloud visualization in RViz gives operators an immediate, intuitive view of what the robot sees — colored clouds by sensor source, URDF wheelchair model, and ultrasonic positions as 3D markers. Debugging in the field requires visual feedback, not log parsing.
+          All sensor streams publish standard <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">PointCloud2</code> messages, which means they appear in RViz immediately with no custom plugin. White cloud = Pico Flexx depth camera. Yellow markers = ultrasonic distance readings as 3D points in each sensor's URDF frame. The full wheelchair URDF and <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">robot_state_publisher</code> render the model in-situ. Field debugging becomes visual, not log-parsing.
         </p>
       </div>
 
@@ -1257,10 +1451,115 @@
         <div class="ease-icon">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
         </div>
-        <h3>MATLAB simulation-first validation</h3>
+        <h3>MATLAB simulation — validated before hardware</h3>
         <p>
-          Before any hardware deployment, I validated the 3-zone logic in a MATLAB simulation with a 3D STL wheelchair model and 42 ray-cast fake LiDAR beams — the same algorithm as the real node. Identical thresholds, identical state machine. Hardware got parameters that were already proven, not guesses.
+          Before deploying to the real wheelchair, I validated the entire 3-zone logic in MATLAB using a 3D STL model of the actual wheelchair, 42 ray-cast fake LiDAR beams (21 per pod) using slab-method ray-box intersection, and color-coded rays (green/yellow/red). The simulation ran the identical state machine and thresholds as the real <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> node. Hardware got parameters that were already proven, not initial guesses.
         </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULATION -->
+<section id="simulation">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag">05 — Simulation</div>
+      <h2>MATLAB Validation Before<br>Any Hardware Deployment</h2>
+    </div>
+
+    <div class="sim-grid">
+      <div class="sim-content fade-up">
+        <p>
+          The discipline of validating algorithms before trusting them in the field is central to this project. I built a complete MATLAB simulation using unicycle kinematics to animate the wheelchair STL model — translating and rotating correctly — with two simulated LiDAR pods casting 42 rays total using slab-method ray-box intersection.
+        </p>
+        <p>
+          Rays are color-coded in real time: green when distance exceeds the caution zone, yellow in the caution range, red when within the danger threshold. The 3-zone state machine governing the simulation is the exact same logic as the deployed ROS2 node — not a simplified proxy. This means the thresholds, zone boundaries, and rotation direction logic were all proven in simulation before touching the real motor controller.
+        </p>
+        <p>
+          This simulation-first mentality is directly analogous to flight-testing instrumentation: you don't deploy an untested sensor calibration to a balloon — you validate it in the lab first.
+        </p>
+
+        <div class="sim-features">
+          <div class="sim-feature">
+            <div class="sf-label">STL Model</div>
+            <p>Real wheelchair .stl rendered and animated with unicycle kinematics</p>
+          </div>
+          <div class="sim-feature">
+            <div class="sf-label">42 Ray Casts</div>
+            <p>Slab-method ray-box intersection, 21 rays per simulated LiDAR pod</p>
+          </div>
+          <div class="sim-feature">
+            <div class="sf-label">Identical Logic</div>
+            <p>Same 3-zone state machine &amp; thresholds as the deployed ROS2 node</p>
+          </div>
+          <div class="sim-feature">
+            <div class="sf-label">Color Feedback</div>
+            <p>Green/yellow/red rays for real-time visual danger zone confirmation</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-visual fade-up" style="transition-delay:0.15s">
+        <div class="sim-title">Simulated LiDAR ray status — live demo</div>
+        <div class="ray-demo" id="ray-demo">
+          <!-- Populated by JS -->
+        </div>
+        <div style="margin-top:1rem;font-family:var(--font-mono);font-size:10px;color:var(--text-dim);text-align:center;">
+          Animated: rays update every 1.5s to simulate scan
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MIGRATION -->
+<section id="migration">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-tag">06 — Engineering Problem</div>
+      <h2>The ROS1 → ROS2 Migration</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:start;">
+      <div class="fade-up">
+        <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;margin-bottom:1.5rem;">
+          The PMD depth camera driver was originally written in ROS1 (<code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy</code>). As the project matured and the NVIDIA Orin Nano's full capabilities required ROS2, I had to migrate the entire stack across framework versions without breaking the downstream navigation nodes.
+        </p>
+        <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;">
+          The constraint I set for myself: keep the same topic names, node names, and message types so that <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> never knew the migration happened. I iterated through four versions, each shipping to production, before landing on the final pure-ROS2 architecture.
+        </p>
+      </div>
+
+      <div class="migration-timeline fade-up" style="transition-delay:0.15s">
+        <div class="mig-step">
+          <div class="mig-num">v1</div>
+          <div class="mig-body">
+            <h4>Empty ROS2 package shell</h4>
+            <p>Created the ROS2 package structure and topic scaffolding. Navigation stack pointed at new topics while the old ROS1 nodes still ran.</p>
+          </div>
+        </div>
+        <div class="mig-step">
+          <div class="mig-num">v2</div>
+          <div class="mig-body">
+            <h4>ROS1 Bridge relay</h4>
+            <p>Installed <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">ros1_bridge</code> to relay messages between frameworks. Allowed running both simultaneously for A/B comparison.</p>
+          </div>
+        </div>
+        <div class="mig-step">
+          <div class="mig-num">v3</div>
+          <div class="mig-body">
+            <h4>Native ROS2 node porting</h4>
+            <p>Rewrote each ROS1 node in <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rclpy</code> — replacing <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy.Publisher</code>, timers, params, and spin pattern. Maintained identical topic names and message types.</p>
+          </div>
+        </div>
+        <div class="mig-step">
+          <div class="mig-num">v4</div>
+          <div class="mig-body">
+            <h4>Full ROS2, bridge removed</h4>
+            <p>Dropped the bridge entirely. ROS1 and ROS2 can still communicate if needed — interfaces are stable. The navigation stack was oblivious to the migration throughout.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1270,14 +1569,14 @@
 <section id="results">
   <div class="container">
     <div class="section-header fade-up">
-      <div class="section-tag">04 — Results &amp; Impact</div>
+      <div class="section-tag">07 — Results &amp; Impact</div>
       <h2>What It Delivered</h2>
     </div>
 
     <div class="results-grid fade-up">
       <div class="result-item">
-        <div class="result-num">6</div>
-        <div class="result-label">Sensors Integrated</div>
+        <div class="result-num">7</div>
+        <div class="result-label">Hardware Components</div>
       </div>
       <div class="result-item">
         <div class="result-num">20Hz</div>
@@ -1297,7 +1596,7 @@
       <div class="award-icon">🏆</div>
       <div class="award-text">
         <h3>Undergraduate Research Symposium — Award Winner</h3>
-        <p>Recognized for technical innovation and real-world application of autonomous systems research. Presented full perception stack, obstacle avoidance results, and MATLAB simulation validation.</p>
+        <p>Recognized for technical innovation and real-world application of autonomous systems research. Presented full perception stack, obstacle avoidance results, MATLAB simulation, and ROS2 sensor fusion architecture.</p>
       </div>
     </div>
   </div>
@@ -1307,54 +1606,54 @@
 <section id="windborne">
   <div class="container">
     <div class="section-header fade-up" style="text-align:center;max-width:640px;margin:0 auto 1rem;">
-      <div class="section-tag" style="justify-content:center;">05 — Why WindBorne</div>
+      <div class="section-tag" style="justify-content:center;">08 — Why WindBorne</div>
       <h2>Direct Skill Alignment</h2>
       <p style="color:var(--text-muted);font-size:0.95rem;margin-top:1rem;">
-        WindBorne's sensors internship is about building, calibrating, and understanding instruments that work in the harshest environments on Earth. Here's exactly how this project maps to that.
+        WindBorne's sensors internship is about building, calibrating, and understanding instruments that work in the harshest environments on Earth. Here's exactly how this project maps to that work.
       </p>
     </div>
 
     <div class="alignment-grid">
       <div class="alignment-card fade-up">
         <div class="align-num">01</div>
-        <div class="align-skill">Hardware Drivers from Scratch</div>
+        <div class="align-skill">Hardware Drivers from SDK Up</div>
         <div class="align-wb">→ WB: sensor manufacturing &amp; calibration infrastructure</div>
-        <div class="align-desc">Wrote hardware drivers for 3 distinct sensor types (ToF depth camera, 2D LiDAR, 9-DOF IMU) — not wrappers, actual driver logic from SDK up. The discipline of making sensors produce trustworthy data is identical to calibration work.</div>
+        <div class="align-desc">Wrote hardware drivers for 3 distinct sensor types — ToF depth camera via Royale SDK, 2D LiDAR over serial, and a 9-DOF IMU bridged through custom firmware. Not wrappers: actual driver logic that configures use cases, handles asynchronous frame delivery, and manages reconnect. The discipline of making sensors produce trustworthy data is identical to calibration infrastructure work.</div>
       </div>
 
       <div class="alignment-card fade-up" style="transition-delay:0.1s">
         <div class="align-num">02</div>
         <div class="align-skill">Bias, Drift, and Data Integrity</div>
         <div class="align-wb">→ WB: investigate bias, systematic error, contamination</div>
-        <div class="align-desc">The gyro-merge trick exists precisely because IMU data has timing artifacts — I had to understand the sensor's output timing to patch it correctly. Hysteresis thresholds were set by analyzing real detection drift at zone boundaries, not guesswork.</div>
+        <div class="align-desc">The gyro-merge trick exists because IMU data has timing artifacts — separate quaternion and gyro frames with no guarantee of simultaneous delivery. I had to understand the sensor's output behavior to patch it correctly. Hysteresis thresholds were set by observing real detection drift at zone boundaries, not guesswork. The covariance matrices in the Imu message explicitly model which axes to trust.</div>
       </div>
 
       <div class="alignment-card fade-up" style="transition-delay:0.2s">
         <div class="align-num">03</div>
         <div class="align-skill">Simulation → Hardware Validation</div>
         <div class="align-wb">→ WB: test sensors in flight, analyze flight performance data</div>
-        <div class="align-desc">Built a full MATLAB simulation with identical control logic before touching hardware. The mentality — validate the algorithm before trusting it in the field — is the same discipline that flight-testing meteorological sensors demands.</div>
+        <div class="align-desc">Built a full MATLAB simulation with identical 3-zone control logic before touching hardware. The mentality — validate the algorithm and parameters before trusting them in the field — is the same discipline that calibrating meteorological sensors for balloon flight demands. You don't find out the threshold is wrong at 15 km altitude.</div>
       </div>
 
       <div class="alignment-card fade-up" style="transition-delay:0.05s">
         <div class="align-num">04</div>
         <div class="align-skill">Custom Calibration Infrastructure</div>
         <div class="align-wb">→ WB: improve calibration infrastructure</div>
-        <div class="align-desc">Designed the serial protocol and ROS2 bridge from scratch — this is calibration infrastructure. Choosing the right coordinate frame transforms, sensor origin offsets, and thresholds all require the same iterative measurement and correction mindset.</div>
+        <div class="align-desc">Designed the serial framing protocol, the ROS2 bridge, and the per-sensor coordinate transforms from scratch. Choosing the right frame convention (CW → CCW flip for RPLidar, Royale → ROS base_link transform for the Flexx2), sensor origin offsets, and detection thresholds all require iterative measurement and correction — the same mindset as building calibration chambers and fixtures.</div>
       </div>
 
       <div class="alignment-card fade-up" style="transition-delay:0.15s">
         <div class="align-num">05</div>
         <div class="align-skill">Python + Linux + Data Analysis</div>
         <div class="align-wb">→ WB: Python proficiency, Linux/bash, data analysis</div>
-        <div class="align-desc">Every node is pure Python on Ubuntu. I debug over serial terminals, profile node timing in bash, and parse sensor logs to tune thresholds. The toolchain is identical to what WindBorne's data analysis pipeline requires.</div>
+        <div class="align-desc">Every node is pure Python on Ubuntu. I debug over serial terminals, profile node timing in bash, parse sensor logs in NumPy to tune thresholds, and use RViz as a live data visualization tool. The toolchain — Python scripts, Linux CLI, structured data wrangling — is identical to what WindBorne's sensor data analysis pipeline requires.</div>
       </div>
 
       <div class="alignment-card fade-up" style="transition-delay:0.25s">
         <div class="align-num">06</div>
         <div class="align-skill">End-to-End Ownership</div>
         <div class="align-wb">→ WB: high agency, own projects end-to-end</div>
-        <div class="align-desc">I started with a donated wheelchair and ended with a working autonomous perception system — wiring, firmware, drivers, ROS2 nodes, simulation, and deployment. No handoff. The same ownership WindBorne needs for sensors going into a global balloon constellation.</div>
+        <div class="align-desc">I started with a donated wheelchair and ended with a working autonomous perception system — power wiring, ESP32 firmware, ROS2 drivers, sensor fusion, MATLAB simulation, and deployment. No handoff. I hit and solved the ROS1→ROS2 migration myself across four shipped versions. This is the ownership model WindBorne needs for sensors that fly in a global balloon constellation.</div>
       </div>
     </div>
   </div>
@@ -1364,10 +1663,10 @@
 <section id="contact">
   <div class="container">
     <div class="fade-up">
-      <div class="section-tag" style="justify-content:center;">Questions via POST request</div>
+      <div class="section-tag" style="justify-content:center;">Submit questions via POST request</div>
       <h2>Let's Talk</h2>
       <p>
-        Reach out by email or LinkedIn — I'm excited about the opportunity to bring this hands-on sensor integration work to WindBorne's constellation.
+        Reach out by email or LinkedIn — I'm excited about the opportunity to bring hands-on sensor integration and data pipeline work to WindBorne's balloon constellation.
       </p>
 
       <div class="contact-links">
@@ -1399,20 +1698,65 @@
 </div>
 
 <script>
+  // ── Fade-up observer ──
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-      }
+      if (e.isIntersecting) e.target.classList.add('visible');
     });
-  }, { threshold: 0.12 });
-
+  }, { threshold: 0.1 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-
-  // Trigger hero immediately
   setTimeout(() => {
     document.querySelectorAll('#hero .fade-up').forEach(el => el.classList.add('visible'));
   }, 100);
+
+  // ── Animated ray demo ──
+  const rays = [
+    { label: '0°',   dist: 3.8, max: 4.0, zone: 'clear' },
+    { label: '15°',  dist: 1.8, max: 4.0, zone: 'clear' },
+    { label: '30°',  dist: 0.9, max: 4.0, zone: 'warn'  },
+    { label: '45°',  dist: 0.4, max: 4.0, zone: 'danger'},
+    { label: '60°',  dist: 0.3, max: 4.0, zone: 'danger'},
+    { label: '75°',  dist: 0.7, max: 4.0, zone: 'warn'  },
+    { label: '90°',  dist: 2.1, max: 4.0, zone: 'clear' },
+    { label: '105°', dist: 3.4, max: 4.0, zone: 'clear' },
+    { label: '120°', dist: 3.9, max: 4.0, zone: 'clear' },
+    { label: '135°', dist: 1.1, max: 4.0, zone: 'warn'  },
+    { label: '150°', dist: 0.5, max: 4.0, zone: 'danger'},
+    { label: '165°', dist: 2.6, max: 4.0, zone: 'clear' },
+  ];
+
+  function renderRays(data) {
+    const container = document.getElementById('ray-demo');
+    if (!container) return;
+    container.innerHTML = data.map(r => `
+      <div class="ray-row ${r.zone}">
+        <span class="ray-label">${r.label}</span>
+        <div class="ray-bar">
+          <div class="ray-fill" style="width:${(r.dist / r.max * 100).toFixed(1)}%"></div>
+        </div>
+        <span class="ray-dist">${r.dist.toFixed(1)}m</span>
+      </div>
+    `).join('');
+  }
+
+  function animateRays() {
+    const mutated = rays.map(r => {
+      const delta = (Math.random() - 0.5) * 0.6;
+      const newDist = Math.max(0.15, Math.min(r.max, r.dist + delta));
+      let zone = 'clear';
+      if (newDist < 0.55) zone = 'danger';
+      else if (newDist < 1.2) zone = 'warn';
+      return { ...r, dist: parseFloat(newDist.toFixed(2)), zone };
+    });
+    renderRays(mutated);
+    rays.forEach((r, i) => {
+      r.dist = mutated[i].dist;
+      r.zone = mutated[i].zone;
+    });
+  }
+
+  renderRays(rays);
+  setInterval(animateRays, 1500);
 </script>
 </body>
 </html>
