@@ -1056,11 +1056,11 @@
           <div class="photo-label">Full build — NVIDIA Orin Nano + dual RPLidar + Pico Flexx</div>
         </div>
         <div class="hw-photo">
-          <img src="Picture 4.PNG" alt="ESP32 + BNO08x IMU on breadboard">
+          <img src="Picture 4.png" alt="ESP32 + BNO08x IMU on breadboard">
           <div class="photo-label">ESP32 + BNO08x IMU on breadboard</div>
         </div>
         <div class="hw-photo">
-          <img src="Picture 5.PNG" alt="RPLidar A1M8 mounted to frame">
+          <img src="Picture6.png" alt="RPLidar A1M8 mounted to frame">
           <div class="photo-label">RPLidar A1M8 ×2 — 2D 360° scan</div>
         </div>
       </div>
@@ -1173,8 +1173,8 @@
 
       <div class="fade-up" style="transition-delay:0.15s">
         <div class="arch-content">
-          <p>Every ROS2 node in this stack was written from scratch — not pulled from a tutorial. The pipeline converts raw hardware signals into typed ROS2 messages, runs real-time fusion, and outputs velocity commands to the motor controller. I wrote four different versions of the LiDAR driver alone as I iterated through issues with angle conventions, coordinate frames, and dual-sensor splitting.</p>
-          <p>I also shipped both a ROS1 and ROS2 version of the PMD depth camera node, migrating from the <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy</code>-based <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">DualPicoSubscriberNode</code> to the ROS2 <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">FlexxCameraNode</code> — maintaining identical topic names across versions to keep the downstream navigation stack unaware of the migration.</p>
+          <p>Every ROS2 node in this stack was written from scratch. The pipeline converts raw hardware signals into typed ROS2 messages, runs real-time fusion, and outputs velocity commands to the motor controller. I wrote four different versions of the LiDAR driver alone as I iterated through issues with angle conventions, coordinate frames, and dual-sensor splitting.</p>
+          <p>I also shipped both a ROS1 and ROS2 version of the PMD depth camera node, migrating from the <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy</code>-based <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">DualPicoSubscriberNode</code> to the ROS2 <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">FlexxCameraNode</code> maintaining identical topic names across versions.</p>
         </div>
 
         <div class="node-cards">
@@ -1254,12 +1254,12 @@
         <div class="subtitle">ESP32 → ROS2 · UART 115200 · Prefix-routed framing · Gyro-merge trick</div>
 
         <p>
-          The most technically interesting component I built is the <strong style="color:var(--text)">ESP32Bridge</strong> — a custom hardware abstraction layer that translates raw microcontroller sensor data into properly typed ROS2 messages over a single UART link. Off-the-shelf serial parsers couldn't handle the heterogeneous mix of IMU quaternions, gyro rates, and four ultrasonic distances I needed to multiplex simultaneously.
+          The most technically interesting component I built is the <strong style="color:var(--text)">ESP32Bridge</strong>. A custom hardware abstraction layer that translates raw microcontroller sensor data into properly typed ROS2 messages over a single UART link. Off-the-shelf serial parsers couldn't handle the heterogeneous mix of IMU quaternions, gyro rates, and four ultrasonic distances I needed to multiplex simultaneously.
         </p>
 
-        <p>
+        <!--<p>
           I designed a lightweight framing protocol using angle-bracket delimiters and prefix tags. Each message is self-identifying — the receiver routes on the prefix string and never needs to track state across frames. This makes the protocol trivially extensible: adding a new sensor is just a new prefix.
-        </p>
+        </p>-->
 
         <div class="code-block">
 <pre><span class="cm"># Wire format — self-framing, prefix-routed</span>
@@ -1364,7 +1364,7 @@
         <div style="margin-top:1.25rem;">
           <div class="highlight-card">
             <div class="card-label">Why one UART link?</div>
-            <p>Multiplexing all sensors over a single serial port keeps wiring simple and the bridge firmware stateless. The prefix tag makes each message self-describing — there is no fragile byte-count or checksum to maintain. The ROS2 node validates the outer angle-bracket framing and silently drops malformed lines.</p>
+            <p>Multiplexing all sensors over a single serial port keeps wiring simple and the bridge firmware stateless..</p>
           </div>
         </div>
       </div>
@@ -1453,7 +1453,7 @@
         </div>
         <h3>MATLAB simulation — validated before hardware</h3>
         <p>
-          Before deploying to the real wheelchair, I validated the entire 3-zone logic in MATLAB using a 3D STL model of the actual wheelchair, 42 ray-cast fake LiDAR beams (21 per pod) using slab-method ray-box intersection, and color-coded rays (green/yellow/red). The simulation ran the identical state machine and thresholds as the real <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> node. Hardware got parameters that were already proven, not initial guesses.
+          Before deploying to the real wheelchair, I tested my sofwtware, hardware and logic through MATLAB using a 3D STL model of the actual wheelchair, 42 ray-cast fake LiDAR beams (21 per pod) using slab-method ray-box intersection, and color-coded rays (green/yellow/red). The simulation ran the identical state machine and thresholds as the real <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> node. 
         </p>
       </div>
     </div>
@@ -1471,7 +1471,7 @@
     <div class="sim-grid">
       <div class="sim-content fade-up">
         <p>
-          The discipline of validating algorithms before trusting them in the field is central to this project. I built a complete MATLAB simulation using unicycle kinematics to animate the wheelchair STL model — translating and rotating correctly — with two simulated LiDAR pods casting 42 rays total using slab-method ray-box intersection.
+          The discipline of validating algorithms in a simulation environment before trusting them in the field is central to this project. I built a complete MATLAB simulation to animate the wheelchair STL model, translating and rotating correctly — with two simulated LiDAR pods casting 42 rays total using slab-method ray-box intersection.
         </p>
         <p>
           Rays are color-coded in real time: green when distance exceeds the caution zone, yellow in the caution range, red when within the danger threshold. The 3-zone state machine governing the simulation is the exact same logic as the deployed ROS2 node — not a simplified proxy. This means the thresholds, zone boundaries, and rotation direction logic were all proven in simulation before touching the real motor controller.
@@ -1527,7 +1527,7 @@
           The PMD depth camera driver was originally written in ROS1 (<code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy</code>). As the project matured and the NVIDIA Orin Nano's full capabilities required ROS2, I had to migrate the entire stack across framework versions without breaking the downstream navigation nodes.
         </p>
         <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;">
-          The constraint I set for myself: keep the same topic names, node names, and message types so that <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> never knew the migration happened. I iterated through four versions, each shipping to production, before landing on the final pure-ROS2 architecture.
+          The constraint I set for myself: keep the same topic names, node names, and message types so that <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code>. I iterated through four versions, as I was learning which version was best for real time data analysis and perception, before landing on the final pure-ROS2 architecture.
         </p>
       </div>
 
@@ -1550,14 +1550,14 @@
           <div class="mig-num">v3</div>
           <div class="mig-body">
             <h4>Native ROS2 node porting</h4>
-            <p>Rewrote each ROS1 node in <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rclpy</code> — replacing <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy.Publisher</code>, timers, params, and spin pattern. Maintained identical topic names and message types.</p>
+            <p>Rewrote each ROS1 node in <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rclpy</code> <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy.Publisher</code>. Maintained identical topic names and message types.</p>
           </div>
         </div>
         <div class="mig-step">
           <div class="mig-num">v4</div>
           <div class="mig-body">
             <h4>Full ROS2, bridge removed</h4>
-            <p>Dropped the bridge entirely. ROS1 and ROS2 can still communicate if needed — interfaces are stable. The navigation stack was oblivious to the migration throughout.</p>
+            <p>Eventually if the bridge is dropped the bridge entirely. ROS1 and ROS2 can still communicate if needed, interfaces are stable.</p>
           </div>
         </div>
       </div>
@@ -1596,7 +1596,7 @@
       <div class="award-icon">🏆</div>
       <div class="award-text">
         <h3>Undergraduate Research Symposium — Award Winner</h3>
-        <p>Recognized for technical innovation and real-world application of autonomous systems research. Presented full perception stack, obstacle avoidance results, MATLAB simulation, and ROS2 sensor fusion architecture.</p>
+        <p>Recognized for oral and technical research presentation. Presented full perception stack, obstacle avoidance results, MATLAB simulation, and ROS2 sensor fusion architecture.</p>
       </div>
     </div>
   </div>
@@ -1618,42 +1618,42 @@
         <div class="align-num">01</div>
         <div class="align-skill">Hardware Drivers from SDK Up</div>
         <div class="align-wb">→ WB: sensor manufacturing &amp; calibration infrastructure</div>
-        <div class="align-desc">Wrote hardware drivers for 3 distinct sensor types — ToF depth camera via Royale SDK, 2D LiDAR over serial, and a 9-DOF IMU bridged through custom firmware. Not wrappers: actual driver logic that configures use cases, handles asynchronous frame delivery, and manages reconnect. The discipline of making sensors produce trustworthy data is identical to calibration infrastructure work.</div>
+        <div class="align-desc">Wrote hardware drivers for 3 distinct sensor types — ToF depth camera via Royale SDK, 2D LiDAR over serial, 6 ultrasonic and IMU. The discipline of making sensors produce trustworthy data is identical to calibration infrastructure work.</div>
       </div>
 
       <div class="alignment-card fade-up" style="transition-delay:0.1s">
         <div class="align-num">02</div>
         <div class="align-skill">Bias, Drift, and Data Integrity</div>
         <div class="align-wb">→ WB: investigate bias, systematic error, contamination</div>
-        <div class="align-desc">The gyro-merge trick exists because IMU data has timing artifacts — separate quaternion and gyro frames with no guarantee of simultaneous delivery. I had to understand the sensor's output behavior to patch it correctly. Hysteresis thresholds were set by observing real detection drift at zone boundaries, not guesswork. The covariance matrices in the Imu message explicitly model which axes to trust.</div>
+        <div class="align-desc">The gyro-merge trick exists because IMU data has timing artifacts. I had to understand the sensor's output behavior to patch it correctly. Hysteresis thresholds were set by observing real detection drift at zone boundaries.</div>
       </div>
 
       <div class="alignment-card fade-up" style="transition-delay:0.2s">
         <div class="align-num">03</div>
         <div class="align-skill">Simulation → Hardware Validation</div>
         <div class="align-wb">→ WB: test sensors in flight, analyze flight performance data</div>
-        <div class="align-desc">Built a full MATLAB simulation with identical 3-zone control logic before touching hardware. The mentality — validate the algorithm and parameters before trusting them in the field — is the same discipline that calibrating meteorological sensors for balloon flight demands. You don't find out the threshold is wrong at 15 km altitude.</div>
+        <div class="align-desc">Built a full MATLAB simulation with identical 3-zone control logic before touching hardware. Equally tested hardware sensor data in the simulation environment. It was very important to test both hardware and sensor logic before field testing. I belive in validating the algorithm and control logic before trusting them in the field, which I believe is the same discipline that calibrating meteorological sensors for balloon flight demands. You would not want to  find out the threshold is wrong at 30 km altitude.</div>
       </div>
 
       <div class="alignment-card fade-up" style="transition-delay:0.05s">
         <div class="align-num">04</div>
         <div class="align-skill">Custom Calibration Infrastructure</div>
         <div class="align-wb">→ WB: improve calibration infrastructure</div>
-        <div class="align-desc">Designed the serial framing protocol, the ROS2 bridge, and the per-sensor coordinate transforms from scratch. Choosing the right frame convention (CW → CCW flip for RPLidar, Royale → ROS base_link transform for the Flexx2), sensor origin offsets, and detection thresholds all require iterative measurement and correction — the same mindset as building calibration chambers and fixtures.</div>
+        <div class="align-desc">Designed the serial framing protocol, the ROS2 bridge, and the per-sensor coordinate transforms from scratch. Choosing the right frame convention , sensor origin offsets, and detection thresholds all require iterative measurement and correction. The same mindset as building calibration chambers and fixtures.</div>
       </div>
 
       <div class="alignment-card fade-up" style="transition-delay:0.15s">
         <div class="align-num">05</div>
         <div class="align-skill">Python + Linux + Data Analysis</div>
         <div class="align-wb">→ WB: Python proficiency, Linux/bash, data analysis</div>
-        <div class="align-desc">Every node is pure Python on Ubuntu. I debug over serial terminals, profile node timing in bash, parse sensor logs in NumPy to tune thresholds, and use RViz as a live data visualization tool. The toolchain — Python scripts, Linux CLI, structured data wrangling — is identical to what WindBorne's sensor data analysis pipeline requires.</div>
+        <div class="align-desc">Every node is pure Python on Linux Ubuntu. I debug over serial terminals, and use RViz as a live data visualization tool.</div>
       </div>
 
       <div class="alignment-card fade-up" style="transition-delay:0.25s">
         <div class="align-num">06</div>
         <div class="align-skill">End-to-End Ownership</div>
         <div class="align-wb">→ WB: high agency, own projects end-to-end</div>
-        <div class="align-desc">I started with a donated wheelchair and ended with a working autonomous perception system — power wiring, ESP32 firmware, ROS2 drivers, sensor fusion, MATLAB simulation, and deployment. No handoff. I hit and solved the ROS1→ROS2 migration myself across four shipped versions. This is the ownership model WindBorne needs for sensors that fly in a global balloon constellation.</div>
+        <div class="align-desc">I started with a donated wheelchair and ended with a working autonomous perception system: power wiring, ESP32 firmware, ROS2 drivers, sensor fusion, MATLAB simulation, and deployment. No handoff. I solved the ROS1→ROS2 migration myself. </div>
       </div>
     </div>
   </div>
