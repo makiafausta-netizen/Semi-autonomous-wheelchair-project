@@ -1008,7 +1008,7 @@
         <div class="hero-label">Engineering Screen — WindBorne Systems</div>
         <h1>Semi-Autonomous<br><span>Wheelchair</span><br>Navigation</h1>
         <p class="hero-sub">
-          A donated power wheelchair rebuilt into a fully sensor-fused autonomous platform — running ROS2, custom firmware, real-time 3D perception, and MATLAB-validated obstacle avoidance. Built from scratch at Widener University.
+          A donated electric wheelchair rebuilt into a fully sensor-fused autonomous platform, running ROS2, real-time 3D perception, and MATLAB-validated obstacle avoidance. Built from scratch at Widener University.
         </p>
 
         <div class="hero-stats">
@@ -1056,11 +1056,11 @@
           <div class="photo-label">Full build — NVIDIA Orin Nano + dual RPLidar + Pico Flexx</div>
         </div>
         <div class="hw-photo">
-          <img src="Picture 4.png" alt="ESP32 + BNO08x IMU on breadboard">
+          <img src="picture 4.PNG" alt="ESP32 + BNO08x IMU on breadboard">
           <div class="photo-label">ESP32 + BNO08x IMU on breadboard</div>
         </div>
         <div class="hw-photo">
-          <img src="Picture6.png" alt="RPLidar A1M8 mounted to frame">
+          <img src="picture6.PNG" alt="RPLidar A1M8 mounted to frame">
           <div class="photo-label">RPLidar A1M8 ×2 — 2D 360° scan</div>
         </div>
       </div>
@@ -1078,8 +1078,8 @@
           <div class="component-item"><div class="dot"></div><strong>NVIDIA Orin Nano</strong> — edge inference &amp; ROS2 host, runs all sensor nodes</div>
           <div class="component-item"><div class="dot"></div><strong>Pico Flexx (PMD ToF)</strong> — 3D depth camera, streams point cloud at ~30 Hz via roypy SDK</div>
           <div class="component-item"><div class="dot"></div><strong>RPLidar A1M8 ×2</strong> — dual 2D spinning LiDAR for 360° environmental coverage</div>
-          <div class="component-item"><div class="dot"></div><strong>BNO08x IMU</strong> — 9-DOF, provides orientation quaternion + gyro yaw rate to ROS2</div>
-          <div class="component-item"><div class="dot"></div><strong>HC-SR04 ×4</strong> — ultrasonic near-field ranging (FL, FR, BL, BR), each published as PointCloud2</div>
+          <div class="component-item"><div class="dot"></div><strong>BNO08x IMU</strong> — provides orientation quaternion + gyro yaw rate to ROS2</div>
+          <div class="component-item"><div class="dot"></div><strong>HC-SR04 ×4</strong> — ultrasonic (FL, FR, BL, BR), each published as PointCloud2</div>
           <div class="component-item"><div class="dot"></div><strong>ESP32</strong> — MCU sensor hub; runs custom serial framing protocol bridging sensors to ROS2</div>
           <div class="component-item"><div class="dot"></div><strong>MCP4728 DAC + CD4066 analog switch</strong> — motor control interface from compute to drive electronics</div>
         </div>
@@ -1174,7 +1174,7 @@
       <div class="fade-up" style="transition-delay:0.15s">
         <div class="arch-content">
           <p>Every ROS2 node in this stack was written from scratch. The pipeline converts raw hardware signals into typed ROS2 messages, runs real-time fusion, and outputs velocity commands to the motor controller. I wrote four different versions of the LiDAR driver alone as I iterated through issues with angle conventions, coordinate frames, and dual-sensor splitting.</p>
-          <p>I also shipped both a ROS1 and ROS2 version of the PMD depth camera node, migrating from the <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy</code>-based <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">DualPicoSubscriberNode</code> to the ROS2 <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">FlexxCameraNode</code> maintaining identical topic names across versions.</p>
+          <p>I also built both a ROS1 and ROS2 version of the PMD depth camera node, migrating from the <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy</code>-based <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">DualPicoSubscriberNode</code> to the ROS2 <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">FlexxCameraNode</code> maintaining identical topic names across versions.</p>
         </div>
 
         <div class="node-cards">
@@ -1183,7 +1183,7 @@
               <div class="node-badge purple">ROS2 · Python</div>
               <h3>dual_rplidar_node.py</h3>
             </div>
-            <p>Connects to two RPLidar A1M8s over serial (<code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">/dev/lidar_left</code>, <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">/dev/lidar_right</code>), one thread per sensor. Negates raw angles to flip from CW to CCW, applies per-sensor FOV gating (0°–180° / 180°–360°), converts polar → Cartesian, and publishes <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">PointCloud2</code>. Includes auto-reconnect on serial drop.</p>
+            <p>Connects to two RPLidar  over serial (<code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">/dev/lidar_left</code>, <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">/dev/lidar_right</code>), one thread per sensor. Negates raw angles to flip from CW to CCW, applies per-sensor FOV gating (0°–180° / 180°–360°), converts polar → Cartesian, and publishes <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">PointCloud2</code>. Includes auto-reconnect on serial drop.</p>
             <div class="topic-pills">
               <span class="topic-pill">/rplidarpc_left</span>
               <span class="topic-pill">/rplidarpc_right</span>
@@ -1212,7 +1212,7 @@
               <div class="node-badge green">ROS2 · Serial UART</div>
               <h3>esp32_bridge_node.py</h3>
             </div>
-            <p>Serial bridge running a background thread that reads framed messages from the ESP32. Routes on prefix tag: <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">IMU_G</code> buffers gyro-Z, <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">IMU_Q</code> merges quaternion + buffered gyro into a single <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">sensor_msgs/Imu</code>, and <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">US</code> publishes four ultrasonic readings as <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">Int32MultiArray</code>.</p>
+            <p>Serial bridge running a background thread that reads framed messages from the ESP32. Routes on prefix tag: <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">IMU_G</code> buffers gyro-Z, <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">IMU_Q</code> merges quaternion + buffered gyro into a single <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">sensor_msgs/Imu</code>, and <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)"> </code> publishes four ultrasonic readings as <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">Int32MultiArray</code>.</p>
             <div class="topic-pills">
               <span class="topic-pill">/imu_data</span>
               <span class="topic-pill">/ultrasonic</span>
@@ -1226,7 +1226,7 @@
               <div class="node-badge pink">ROS2 · PointCloud2</div>
               <h3>ultrasonic_pointcloud_node.py</h3>
             </div>
-            <p>Converts the raw <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">Int32MultiArray</code> (cm) from the ESP32 bridge into per-sensor <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">PointCloud2</code> messages. Each reading becomes a single 3D point at <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">[distance_m, 0, 0]</code> in that sensor's URDF frame — the TF tree in <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">robot_state_publisher</code> handles rotation into the world frame automatically. Invalid (≤0) or sub-min-range readings are dropped, not published.</p>
+            <p>Converts the raw <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">Int32MultiArray</code> (cm) from the ESP32 bridge into per-sensor <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">PointCloud2</code> messages. Each reading becomes a single 3D point at <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">[distance_m, 0, 0]</code> in that sensor'sframe <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)"> </code> . Invalid (≤0) or sub-min-range readings are dropped, not published.</p>
             <div class="topic-pills">
               <span class="topic-pill">/ultrasonic/front_left</span>
               <span class="topic-pill">/ultrasonic/front_right</span>
@@ -1254,7 +1254,7 @@
         <div class="subtitle">ESP32 → ROS2 · UART 115200 · Prefix-routed framing · Gyro-merge trick</div>
 
         <p>
-          The most technically interesting component I built is the <strong style="color:var(--text)">ESP32Bridge</strong>. A custom hardware abstraction layer that translates raw microcontroller sensor data into properly typed ROS2 messages over a single UART link. Off-the-shelf serial parsers couldn't handle the heterogeneous mix of IMU quaternions, gyro rates, and four ultrasonic distances I needed to multiplex simultaneously.
+          The most technically interesting component I built is the <strong style="color:var(--text)">ESP32Bridge</strong>. A custom hardware abstraction layer that translates raw microcontroller sensor data into properly typed ROS2 messages over a single UART link. serial parsers couldn't handle the complex mix of IMU, gyro rates, and four ultrasonic distances I needed to filter through them simultaneously.
         </p>
 
         <!--<p>
@@ -1263,13 +1263,13 @@
 
         <div class="code-block">
 <pre><span class="cm"># Wire format — self-framing, prefix-routed</span>
-<span class="str">&lt;IMU_Q, 0.12, 0.45, 0.78, 0.32&gt;</span>  <span class="cm">← orientation quaternion (x,y,z,w)</span>
+<span class="str">&lt;IMU_Q, 0.12, 0.45, 0.78, 0.32&gt;</span>  <span class="cm">← orientation  (x,y,z,w)</span>
 <span class="str">&lt;IMU_G, 0.042&gt;</span>                    <span class="cm">← yaw rate from gyro (rad/s)</span>
 <span class="str">&lt;US, 45, 23, 67, 12&gt;</span>             <span class="cm">← 4 ultrasonic distances in cm</span></pre>
         </div>
 
         <p>
-          The most elegant problem I solved here is the <strong style="color:var(--text)">gyro-merge trick</strong>. ROS2's <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">sensor_msgs/Imu</code> requires orientation and angular velocity in a single message — but the ESP32 sends them as separate frames to minimize packet size and keep firmware simple. My bridge node buffers the latest <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">gyro_z</code> value and stamps it onto the next quaternion frame before publishing. The result is a clean, complete IMU message with zero data loss and no extra bandwidth.
+          The most elegant problem I solved here is the <strong style="color:var(--text)">gyro-merge trick</strong>. ROS2's <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">sensor_msgs/Imu</code> requires orientation and angular velocity in a single message, but the ESP32 sends them as separate frames to minimize packet size and keep firmware simple. My bridge node buffers the latest <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">gyro_z</code> value and stamps it onto the next frame before publishing. The result is a clean, complete IMU message with zero data loss and no extra bandwidth.
         </p>
 
         <div class="code-block">
@@ -1293,11 +1293,11 @@
         </div>
 
         <p>
-          The covariance matrices in the published <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">Imu</code> message are carefully set: X/Y angular velocity and all linear acceleration terms are marked with <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">99999.0</code> (effectively infinite uncertainty), which signals any downstream EKF to ignore those axes. Only yaw rate and orientation quaternion are trusted. This prevents a noisy or absent accelerometer from polluting localization.
+          The covariance matrices in the published <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">Imu</code> message are carefully set: X/Y angular velocity <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)"> </code> Only yaw rate and orientation are trusted.
         </p>
 
         <p>
-          The ultrasonic-to-PointCloud2 conversion in the companion node is another key design choice: rather than writing a custom message type, I map each distance reading to a single 3D point <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">[dist_m, 0, 0]</code> published in that sensor's URDF frame. The TF tree in <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">robot_state_publisher</code> rotates it into world coordinates automatically — the navigation stack sees it as just another point cloud, no special casing required.
+          The ultrasonic-to-PointCloud2 conversion in the companion node is another key design choice: rather than writing a custom message type, I map each distance reading to a single 3D point <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">[dist_m, 0, 0]</code> published in that sensor's frame. The TF tree in <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">robot_state_publisher</code> rotates it into world coordinates automatically. the navigation stack sees it as just another point cloud.
         </p>
 
         <p style="color:var(--text-muted);">
@@ -1364,7 +1364,7 @@
         <div style="margin-top:1.25rem;">
           <div class="highlight-card">
             <div class="card-label">Why one UART link?</div>
-            <p>Multiplexing all sensors over a single serial port keeps wiring simple and the bridge firmware stateless..</p>
+            <p>Multiplexing all sensors over a single serial port keeps wiring simple</p>
           </div>
         </div>
       </div>
@@ -1388,7 +1388,7 @@
           </div>
           <h3>Why hysteresis is the critical design choice</h3>
           <p>
-            Without hysteresis, obstacle avoidance systems oscillate — the wheelchair spins back and forth at a threshold boundary, which is disorienting and alarming to a user with a disability. I solved this with two deliberately asymmetric thresholds: avoidance <em>activates</em> at 20 cm but only <em>clears</em> at 35 cm. This 15 cm dead-band means the system commits to an evasion action before reversing it, producing smooth, predictable behavior.
+            Without hysteresis, obstacle avoidance systems oscillate. The wheelchair spins back and forth at a threshold boundary, which is disorienting and alarming to a user with a disability. I solved this with two deliberately asymmetric thresholds: avoidance <em>activates</em> at 20 cm but only <em>clears</em> at 35 cm. This 15 cm dead-band means the system commits to an evasion action before reversing it, producing smooth, predictable behavior.
           </p>
           <p style="margin-top:0.75rem;">
             The rotation direction is also chosen algorithmically: the node computes <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">left_clear</code> and <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">right_clear</code> by taking the minimum distance from the LiDAR and depth camera on each side, then rotates toward whichever half-space has more room. Users consistently get turned toward open space, not toward a wall.
@@ -1433,7 +1433,7 @@
         </div>
         <h3>Sensor fusion — minimum-distance across all sources</h3>
         <p>
-          The <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> node subscribes to all five data streams: <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/rplidarpc_left</code>, <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/rplidarpc_right</code>, <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/flexx2/filtered_points</code>, and all four ultrasonic point clouds. For each zone it takes the minimum distance across all active sensors. Any one sensor detecting danger triggers the response — a sensor dropout just means slightly reduced coverage, not a blind spot.
+          The <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> node subscribes to all five data streams: <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/rplidarpc_left</code>, <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/rplidarpc_right</code>, <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/flexx2/filtered_points</code>, and all four ultrasonic point clouds. For each zone it takes the minimum distance across all active sensors. Any one sensor detecting danger triggers the response .
         </p>
       </div>
 
@@ -1443,7 +1443,7 @@
         </div>
         <h3>RViz live visualization — all streams simultaneously</h3>
         <p>
-          All sensor streams publish standard <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">PointCloud2</code> messages, which means they appear in RViz immediately with no custom plugin. White cloud = Pico Flexx depth camera. Yellow markers = ultrasonic distance readings as 3D points in each sensor's URDF frame. The full wheelchair URDF and <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">robot_state_publisher</code> render the model in-situ. Field debugging becomes visual, not log-parsing.
+          All sensor streams publish standard <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">PointCloud2</code> messages, which means they appear in RViz immediately . White cloud = Pico Flexx depth camera. Yellow markers = ultrasonic distance readings as 3D points in each sensor's URDF frame. The full wheelchair URDF and <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">robot_state_publisher</code> render the model in-situ. Field debugging becomes visual, as we can see and interprete each data log from the sensors based on color coding and visual distance.
         </p>
       </div>
 
@@ -1451,7 +1451,7 @@
         <div class="ease-icon">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
         </div>
-        <h3>MATLAB simulation — validated before hardware</h3>
+        <h3>MATLAB simulation: used to test both hardware and software</h3>
         <p>
           Before deploying to the real wheelchair, I tested my sofwtware, hardware and logic through MATLAB using a 3D STL model of the actual wheelchair, 42 ray-cast fake LiDAR beams (21 per pod) using slab-method ray-box intersection, and color-coded rays (green/yellow/red). The simulation ran the identical state machine and thresholds as the real <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> node. 
         </p>
