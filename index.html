@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salient Fausta Makia - Hardware Engineering Portfolio</title>
+<title>Salient Fausta Makia — Hardware Engineering Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -854,18 +854,18 @@
   .award-text h3 { font-size: 1rem; color: var(--amber); margin-bottom: 0.25rem; }
   .award-text p { font-size: 0.875rem; color: var(--text-muted); }
 
-  /* ── WINDBORNE ALIGNMENT ── */
-  #windborne {
+  /* ── SKILLS SECTION ── */
+  #skills {
     padding: 7rem 0;
     border-top: 1px solid var(--border);
   }
-  .alignment-grid {
+  .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 3rem;
   }
-  .alignment-card {
+  .skill-card {
     background: var(--panel);
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -874,11 +874,11 @@
     overflow: hidden;
     transition: border-color 0.2s, transform 0.2s;
   }
-  .alignment-card:hover {
+  .skill-card:hover {
     border-color: rgba(155,109,214,0.25);
     transform: translateY(-2px);
   }
-  .alignment-card::before {
+  .skill-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
@@ -887,28 +887,21 @@
     opacity: 0;
     transition: opacity 0.2s;
   }
-  .alignment-card:hover::before { opacity: 1; }
-  .align-num {
+  .skill-card:hover::before { opacity: 1; }
+  .skill-num {
     font-family: var(--font-mono);
     font-size: 10px;
     color: var(--text-dim);
     margin-bottom: 0.75rem;
   }
-  .align-skill {
+  .skill-name {
     font-family: var(--font-display);
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--text);
-    margin-bottom: 0.25rem;
-  }
-  .align-wb {
-    font-family: var(--font-mono);
-    font-size: 10px;
-    color: var(--teal);
     margin-bottom: 0.75rem;
-    letter-spacing: 0.04em;
   }
-  .align-desc {
+  .skill-desc {
     font-size: 0.85rem;
     color: var(--text-muted);
     line-height: 1.65;
@@ -974,7 +967,7 @@
   /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
     .hero-inner, .hw-grid, .component-deep, .ease-grid, .arch-full,
-    .sim-grid, .sim-features, .results-grid, .alignment-grid { grid-template-columns: 1fr; }
+    .sim-grid, .sim-features, .results-grid, .skills-grid { grid-template-columns: 1fr; }
     .ease-card.featured { grid-template-columns: 1fr; }
     .results-grid { grid-template-columns: repeat(2, 1fr); }
     .nav-links { display: none; }
@@ -995,7 +988,7 @@
     <li><a href="#component">Deep Dive</a></li>
     <li><a href="#easeofuse">Design</a></li>
     <li><a href="#results">Results</a></li>
-    <li><a href="#windborne">Fit</a></li>
+    <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -1005,7 +998,7 @@
   <div class="container">
     <div class="hero-inner">
       <div class="hero-text fade-up">
-        <div class="hero-label">Engineering Screen — WindBorne Systems</div>
+        <div class="hero-label">Hardware &amp; Robotics Engineering</div>
         <h1>Semi-Autonomous<br><span>Wheelchair</span><br>Navigation</h1>
         <p class="hero-sub">
           A donated electric wheelchair rebuilt into a fully sensor-fused autonomous platform, running ROS2, real-time 3D perception, and MATLAB-validated obstacle avoidance. Built from scratch at Widener University.
@@ -1028,7 +1021,7 @@
 
         <div class="hero-btns">
           <a href="#component" class="btn btn-primary">See the Deep Dive</a>
-          <a href="#windborne" class="btn btn-ghost">WindBorne Fit →</a>
+          <a href="#skills" class="btn btn-ghost">My Skills →</a>
         </div>
       </div>
 
@@ -1053,11 +1046,11 @@
       <div class="hw-photos fade-up">
         <div class="hw-photo wide">
           <img src="Picture2.png" alt="Full wheelchair sensor array with NVIDIA Orin Nano">
-          <div class="photo-label">Full build wiring diagram </div>
+          <div class="photo-label">Full build wiring diagram</div>
         </div>
         <div class="hw-photo">
           <img src="picture 4.PNG" alt="ESP32 + BNO08x IMU on breadboard">
-          <div class="photo-label">Matlab Simulation environment</div>
+          <div class="photo-label">MATLAB simulation environment</div>
         </div>
         <div class="hw-photo">
           <img src="picture6.PNG" alt="RPLidar A1M8 mounted to frame">
@@ -1081,7 +1074,7 @@
           <div class="component-item"><div class="dot"></div><strong>BNO08x IMU</strong> — provides orientation quaternion + gyro yaw rate to ROS2</div>
           <div class="component-item"><div class="dot"></div><strong>HC-SR04 ×4</strong> — ultrasonic (FL, FR, BL, BR), each published as PointCloud2</div>
           <div class="component-item"><div class="dot"></div><strong>ESP32</strong> — MCU sensor hub; runs custom serial framing protocol bridging sensors to ROS2</div>
-          <div class="component-item"><div class="dot"></div><strong>NVIDIA Jetson</strong> — connected to all the sensors collecting sensor data </div>
+          <div class="component-item"><div class="dot"></div><strong>NVIDIA Jetson</strong> — connected to all sensors, collecting sensor data</div>
         </div>
 
         <div class="highlight-card">
@@ -1111,7 +1104,7 @@
             <div class="arch-nodes">
               <div class="arch-node">Pico Flexx (ToF)</div>
               <div class="arch-node">RPLidar ×2</div>
-              <div class="arch-node"> IMU</div>
+              <div class="arch-node">IMU</div>
               <div class="arch-node">Ultrasonic Sensors ×4</div>
             </div>
           </div>
@@ -1174,7 +1167,7 @@
       <div class="fade-up" style="transition-delay:0.15s">
         <div class="arch-content">
           <p>Every ROS2 node in this stack was written from scratch. The pipeline converts raw hardware signals into typed ROS2 messages, runs real-time fusion, and outputs velocity commands to the motor controller. I wrote four different versions of the LiDAR driver alone as I iterated through issues with angle conventions, coordinate frames, and dual-sensor splitting.</p>
-          <p>I also built both a ROS1 and ROS2 version of the PMD depth camera node, migrating from the <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy</code>-based <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">DualPicoSubscriberNode</code> to the ROS2 <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">FlexxCameraNode</code> maintaining identical topic names across versions.</p>
+          <p>I also built both a ROS1 and ROS2 version of the PMD depth camera node, migrating from the <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy</code>-based <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">DualPicoSubscriberNode</code> to the ROS2 <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">FlexxCameraNode</code>, maintaining identical topic names across versions.</p>
         </div>
 
         <div class="node-cards">
@@ -1183,7 +1176,7 @@
               <div class="node-badge purple">ROS2 · Python</div>
               <h3>dual_rplidar_node.py</h3>
             </div>
-            <p>Connects to two RPLidar  over serial (<code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">/dev/lidar_left</code>, <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">/dev/lidar_right</code>), one thread per sensor. Negates raw angles to flip from CW to CCW, applies per-sensor FOV gating (0°–180° / 180°–360°), converts polar → Cartesian, and publishes <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">PointCloud2</code>. Includes auto-reconnect on serial drop.</p>
+            <p>Connects to two RPLidar units over serial (<code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">/dev/lidar_left</code>, <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">/dev/lidar_right</code>), one thread per sensor. Negates raw angles to flip from CW to CCW, applies per-sensor FOV gating (0°–180° / 180°–360°), converts polar → Cartesian, and publishes <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">PointCloud2</code>. Includes auto-reconnect on serial drop.</p>
             <div class="topic-pills">
               <span class="topic-pill">/rplidarpc_left</span>
               <span class="topic-pill">/rplidarpc_right</span>
@@ -1212,7 +1205,7 @@
               <div class="node-badge green">ROS2 · Serial UART</div>
               <h3>esp32_bridge_node.py</h3>
             </div>
-            <p>Serial bridge running a background thread that reads framed messages from the ESP32. Routes on prefix tag: <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">IMU_G</code> buffers gyro-Z, <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">IMU_Q</code> merges quaternion + buffered gyro into a single <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">sensor_msgs/Imu</code>, and <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)"> </code> publishes four ultrasonic readings as <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">Int32MultiArray</code>.</p>
+            <p>Serial bridge running a background thread that reads framed messages from the ESP32. Routes on prefix tag: <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">IMU_G</code> buffers gyro-Z, <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">IMU_Q</code> merges quaternion + buffered gyro into a single <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">sensor_msgs/Imu</code>, and <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">US</code> publishes four ultrasonic readings as <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">Int32MultiArray</code>.</p>
             <div class="topic-pills">
               <span class="topic-pill">/imu_data</span>
               <span class="topic-pill">/ultrasonic</span>
@@ -1226,7 +1219,7 @@
               <div class="node-badge pink">ROS2 · PointCloud2</div>
               <h3>ultrasonic_pointcloud_node.py</h3>
             </div>
-            <p>Converts the raw <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">Int32MultiArray</code> (cm) from the ESP32 bridge into per-sensor <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">PointCloud2</code> messages. Each reading becomes a single 3D point at <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">[distance_m, 0, 0]</code> in that sensor'sframe <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)"> </code> . Invalid (≤0) or sub-min-range readings are dropped, not published.</p>
+            <p>Converts the raw <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">Int32MultiArray</code> (cm) from the ESP32 bridge into per-sensor <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">PointCloud2</code> messages. Each reading becomes a single 3D point at <code style="font-family:var(--font-mono);font-size:11px;color:var(--teal)">[distance_m, 0, 0]</code> in that sensor's frame. Invalid (≤0) or sub-min-range readings are dropped, not published.</p>
             <div class="topic-pills">
               <span class="topic-pill">/ultrasonic/front_left</span>
               <span class="topic-pill">/ultrasonic/front_right</span>
@@ -1254,12 +1247,8 @@
         <div class="subtitle">ESP32 → ROS2 · UART 115200 · Prefix-routed framing · Gyro-merge trick</div>
 
         <p>
-          The most technically interesting component I built is the <strong style="color:var(--text)">ESP32Bridge</strong>. A custom hardware abstraction layer that translates raw microcontroller sensor data into properly typed ROS2 messages over a single UART link. serial parsers couldn't handle the complex mix of IMU, gyro rates, and four ultrasonic distances I needed to filter through them simultaneously.
+          The most technically interesting component I built is the <strong style="color:var(--text)">ESP32Bridge</strong>. A custom hardware abstraction layer that translates raw microcontroller sensor data into properly typed ROS2 messages over a single UART link. Standard serial parsers couldn't handle the complex mix of IMU, gyro rates, and four ultrasonic distances that needed to be filtered through simultaneously.
         </p>
-
-        <!--<p>
-          I designed a lightweight framing protocol using angle-bracket delimiters and prefix tags. Each message is self-identifying — the receiver routes on the prefix string and never needs to track state across frames. This makes the protocol trivially extensible: adding a new sensor is just a new prefix.
-        </p>-->
 
         <div class="code-block">
 <pre><span class="cm"># Wire format — self-framing, prefix-routed</span>
@@ -1293,15 +1282,11 @@
         </div>
 
         <p>
-          The covariance matrices in the published <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">Imu</code> message are carefully set: X/Y angular velocity <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)"> </code> Only yaw rate and orientation are trusted.
+          The covariance matrices in the published <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">Imu</code> message are carefully set: only yaw rate and orientation are trusted.
         </p>
 
         <p>
-          The ultrasonic-to-PointCloud2 conversion in the companion node is another key design choice: rather than writing a custom message type, I map each distance reading to a single 3D point <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">[dist_m, 0, 0]</code> published in that sensor's frame. The TF tree in <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">robot_state_publisher</code> rotates it into world coordinates automatically. the navigation stack sees it as just another point cloud.
-        </p>
-
-        <p style="color:var(--text-muted);">
-          This component is directly analogous to WindBorne's sensor manufacturing pipeline: custom communication protocols, careful handling of timing artifacts, covariance modeling for sensor trust, and designing data pipelines that are simple enough to be reliable in the field.
+          The ultrasonic-to-PointCloud2 conversion in the companion node is another key design choice: rather than writing a custom message type, I map each distance reading to a single 3D point <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">[dist_m, 0, 0]</code> published in that sensor's frame. The TF tree in <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">robot_state_publisher</code> rotates it into world coordinates automatically — the navigation stack sees it as just another point cloud.
         </p>
       </div>
 
@@ -1317,7 +1302,7 @@
             </div>
           </div>
 
-          <div class="arch-arrow">↓ </div>
+          <div class="arch-arrow">↓</div>
 
           <div class="arch-layer">
             <div class="arch-layer-label">Serial framing</div>
@@ -1335,7 +1320,7 @@
             <div class="arch-nodes">
               <div class="arch-node">IMU_G → buffer _gyro_z</div>
               <div class="arch-node">IMU_Q → merge + publish Imu</div>
-              <div class="arch-node">US </div>
+              <div class="arch-node">US → publish distances</div>
             </div>
           </div>
 
@@ -1364,7 +1349,7 @@
         <div style="margin-top:1.25rem;">
           <div class="highlight-card">
             <div class="card-label">Why one UART link?</div>
-            <p>Multiplexing all sensors over a single serial port keeps wiring simple</p>
+            <p>Multiplexing all sensors over a single serial port keeps wiring simple and the protocol self-describing and easy to extend.</p>
           </div>
         </div>
       </div>
@@ -1433,7 +1418,7 @@
         </div>
         <h3>Sensor fusion — minimum-distance across all sources</h3>
         <p>
-          The <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> node subscribes to all five data streams: <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/rplidarpc_left</code>, <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/rplidarpc_right</code>, <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/flexx2/filtered_points</code>, and all four ultrasonic point clouds. For each zone it takes the minimum distance across all active sensors. Any one sensor detecting danger triggers the response .
+          The <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> node subscribes to all five data streams: <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/rplidarpc_left</code>, <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/rplidarpc_right</code>, <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">/flexx2/filtered_points</code>, and all four ultrasonic point clouds. For each zone it takes the minimum distance across all active sensors — any one sensor detecting danger triggers the response.
         </p>
       </div>
 
@@ -1443,7 +1428,7 @@
         </div>
         <h3>RViz live visualization — all streams simultaneously</h3>
         <p>
-          All sensor streams publish standard <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">PointCloud2</code> messages, which means they appear in RViz immediately . White cloud = Pico Flexx depth camera. Yellow markers = ultrasonic distance readings as 3D points in each sensor's URDF frame. The full wheelchair URDF and <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">robot_state_publisher</code> render the model in-situ. Field debugging becomes visual, as we can see and interprete each data log from the sensors based on color coding and visual distance.
+          All sensor streams publish standard <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">PointCloud2</code> messages, appearing in RViz immediately. White cloud = Pico Flexx depth camera. Yellow markers = ultrasonic distance readings as 3D points in each sensor's URDF frame. The full wheelchair URDF and <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">robot_state_publisher</code> render the model in-situ. Field debugging becomes visual — each data stream is color-coded for instant interpretation.
         </p>
       </div>
 
@@ -1451,9 +1436,9 @@
         <div class="ease-icon">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18"/></svg>
         </div>
-        <h3>MATLAB simulation: used to test both hardware and software</h3>
+        <h3>MATLAB simulation: validate both hardware and software</h3>
         <p>
-          Before deploying to the real wheelchair, I tested my sofwtware, hardware and logic through MATLAB using a 3D STL model of the actual wheelchair, 42 ray-cast fake LiDAR beams (21 per pod) using slab-method ray-box intersection, and color-coded rays (green/yellow/red). The simulation ran the identical state machine and thresholds as the real <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> node. 
+          Before deploying to the real wheelchair, I tested software, hardware, and logic through MATLAB using a 3D STL model of the actual wheelchair, 42 ray-cast fake LiDAR beams (21 per pod) using slab-method ray-box intersection, and color-coded rays (green/yellow/red). The simulation ran the identical state machine and thresholds as the real <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> node.
         </p>
       </div>
     </div>
@@ -1471,13 +1456,13 @@
     <div class="sim-grid">
       <div class="sim-content fade-up">
         <p>
-          The discipline of validating algorithms in a simulation environment before trusting them in the field is central to this project. I built a complete MATLAB simulation to animate the wheelchair STL model, translating and rotating correctly — with two simulated LiDAR pods casting 42 rays total using slab-method ray-box intersection.
+          The discipline of validating algorithms in a simulation environment before trusting them in the field is central to this project. I built a complete MATLAB simulation to animate the wheelchair STL model — translating and rotating correctly — with two simulated LiDAR pods casting 42 rays total using slab-method ray-box intersection.
         </p>
         <p>
           Rays are color-coded in real time: green when distance exceeds the caution zone, yellow in the caution range, red when within the danger threshold. The 3-zone state machine governing the simulation is the exact same logic as the deployed ROS2 node — not a simplified proxy. This means the thresholds, zone boundaries, and rotation direction logic were all proven in simulation before touching the real motor controller.
         </p>
         <p>
-          This simulation-first mentality is directly analogous to flight-testing instrumentation: you don't deploy an untested sensor calibration to a balloon — you validate it in the lab first.
+          This simulation-first mentality applies to any safety-critical embedded system: validate the algorithm in the lab before trusting it in the field.
         </p>
 
         <div class="sim-features">
@@ -1527,7 +1512,7 @@
           The PMD depth camera driver was originally written in ROS1 (<code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy</code>). As the project matured and the NVIDIA Orin Nano's full capabilities required ROS2, I had to migrate the entire stack across framework versions without breaking the downstream navigation nodes.
         </p>
         <p style="color:var(--text-muted);font-size:0.95rem;line-height:1.8;">
-          The constraint I set for myself: keep the same topic names, node names, and message types so that <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code>. I iterated through four versions, as I was learning which version was best for real time data analysis and perception, before landing on the final pure-ROS2 architecture.
+          The constraint I set for myself: keep the same topic names, node names, and message types so that <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">SensorAvoidance</code> required zero changes. I iterated through four versions — learning which architecture was best for real-time data analysis and perception — before landing on the final pure-ROS2 architecture.
         </p>
       </div>
 
@@ -1550,14 +1535,14 @@
           <div class="mig-num">v3</div>
           <div class="mig-body">
             <h4>Native ROS2 node porting</h4>
-            <p>Rewrote each ROS1 node in <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rclpy</code> <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy.Publisher</code>. Maintained identical topic names and message types.</p>
+            <p>Rewrote each ROS1 node in <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rclpy</code>, replacing <code style="font-family:var(--font-mono);font-size:12px;color:var(--teal)">rospy.Publisher</code>. Maintained identical topic names and message types.</p>
           </div>
         </div>
         <div class="mig-step">
           <div class="mig-num">v4</div>
           <div class="mig-body">
             <h4>Full ROS2, bridge removed</h4>
-            <p>Eventually if the bridge is dropped the bridge entirely. ROS1 and ROS2 can still communicate if needed, interfaces are stable.</p>
+            <p>Bridge dropped entirely. ROS1 and ROS2 can still communicate if needed; all interfaces are stable and forward-compatible.</p>
           </div>
         </div>
       </div>
@@ -1602,58 +1587,52 @@
   </div>
 </section>
 
-<!-- WINDBORNE ALIGNMENT -->
-<section id="windborne">
+<!-- SKILLS & STRENGTHS -->
+<section id="skills">
   <div class="container">
     <div class="section-header fade-up" style="text-align:center;max-width:640px;margin:0 auto 1rem;">
-      <div class="section-tag" style="justify-content:center;">08 — Why WindBorne</div>
-      <h2>Direct Skill Alignment</h2>
+      <div class="section-tag" style="justify-content:center;">08 — Skills &amp; Strengths</div>
+      <h2>What I Bring to the Table</h2>
       <p style="color:var(--text-muted);font-size:0.95rem;margin-top:1rem;">
-        WindBorne's sensors internship is about building, calibrating, and understanding instruments that work in the harshest environments on Earth. Here's exactly how this project maps to that work.
+        A summary of the core engineering capabilities demonstrated throughout this project.
       </p>
     </div>
 
-    <div class="alignment-grid">
-      <div class="alignment-card fade-up">
-        <div class="align-num">01</div>
-        <div class="align-skill">Hardware Drivers from SDK Up</div>
-        <div class="align-wb">→ WB: sensor manufacturing &amp; calibration infrastructure</div>
-        <div class="align-desc">Wrote hardware drivers for 3 distinct sensor types. Depth camera via Royale SDK, 2D LiDAR over serial, 6 ultrasonic and IMU. The discipline of making sensors produce trustworthy data is identical to calibration infrastructure work.</div>
+    <div class="skills-grid">
+      <div class="skill-card fade-up">
+        <div class="skill-num">01</div>
+        <div class="skill-name">Hardware Drivers from SDK Up</div>
+        <div class="skill-desc">Wrote hardware drivers for 3 distinct sensor types: depth camera via Royale SDK, 2D LiDAR over serial, ultrasonic array and IMU via ESP32. Making sensors produce trustworthy, well-typed data from raw hardware output.</div>
       </div>
 
-      <div class="alignment-card fade-up" style="transition-delay:0.1s">
-        <div class="align-num">02</div>
-        <div class="align-skill">Bias, Drift, and Data Integrity</div>
-        <div class="align-wb">→ WB: investigate bias, systematic error, contamination</div>
-        <div class="align-desc">The gyro-merge trick exists because IMU data has timing artifacts. I had to understand the sensor's output behavior to patch it correctly. Hysteresis thresholds were set by observing real detection drift at zone boundaries.</div>
+      <div class="skill-card fade-up" style="transition-delay:0.1s">
+        <div class="skill-num">02</div>
+        <div class="skill-name">Bias, Drift &amp; Data Integrity</div>
+        <div class="skill-desc">The gyro-merge trick exists because IMU data has timing artifacts. Understanding sensor output behavior well enough to patch it correctly. Hysteresis thresholds were derived from observing real detection drift at zone boundaries.</div>
       </div>
 
-      <div class="alignment-card fade-up" style="transition-delay:0.2s">
-        <div class="align-num">03</div>
-        <div class="align-skill">Simulation → Hardware Validation</div>
-        <div class="align-wb">→ WB: test sensors in flight, analyze flight performance data</div>
-        <div class="align-desc">Built a full MATLAB simulation with identical 3-zone control logic before touching hardware. Equally tested hardware sensor data in the simulation environment. It was very important to test both hardware and sensor logic before field testing. I belive in validating the algorithm and control logic before trusting them in the field, which I believe is the same discipline that calibrating meteorological sensors for balloon flight demands. You would not want to  find out the threshold is wrong at 30 km altitude.</div>
+      <div class="skill-card fade-up" style="transition-delay:0.2s">
+        <div class="skill-num">03</div>
+        <div class="skill-name">Simulation → Hardware Validation</div>
+        <div class="skill-desc">Built a full MATLAB simulation with identical 3-zone control logic before deploying to hardware. Validated both algorithm correctness and sensor integration in a controlled environment first — the only responsible way to test safety-critical systems.</div>
       </div>
 
-      <div class="alignment-card fade-up" style="transition-delay:0.05s">
-        <div class="align-num">04</div>
-        <div class="align-skill">Custom Calibration Infrastructure</div>
-        <div class="align-wb">→ WB: improve calibration infrastructure</div>
-        <div class="align-desc">Designed the serial framing protocol, the ROS2 bridge, and the per-sensor coordinate transforms from scratch. Choosing the right frame convention , sensor origin offsets, and detection thresholds all require iterative measurement and correction. The same mindset as building calibration chambers and fixtures.</div>
+      <div class="skill-card fade-up" style="transition-delay:0.05s">
+        <div class="skill-num">04</div>
+        <div class="skill-name">Custom Protocol Design</div>
+        <div class="skill-desc">Designed the serial framing protocol, the ROS2 bridge, and the per-sensor coordinate transforms from scratch. Chose the right frame conventions, sensor origin offsets, and detection thresholds through iterative measurement and correction.</div>
       </div>
 
-      <div class="alignment-card fade-up" style="transition-delay:0.15s">
-        <div class="align-num">05</div>
-        <div class="align-skill">Python + Linux + Data Analysis</div>
-        <div class="align-wb">→ WB: Python proficiency, Linux/bash, data analysis</div>
-        <div class="align-desc">Every node is pure Python on Linux Ubuntu. I debug over serial terminals, and use RViz as a live data visualization tool.</div>
+      <div class="skill-card fade-up" style="transition-delay:0.15s">
+        <div class="skill-num">05</div>
+        <div class="skill-name">Python · Linux · Data Analysis</div>
+        <div class="skill-desc">Every node is pure Python on Linux Ubuntu. Debug over serial terminals, use RViz as a live data visualization tool, and analyze sensor logs to tune parameters. Comfortable with the full embedded Linux toolchain.</div>
       </div>
 
-      <div class="alignment-card fade-up" style="transition-delay:0.25s">
-        <div class="align-num">06</div>
-        <div class="align-skill">End-to-End Ownership</div>
-        <div class="align-wb">→ WB: high agency, own projects end-to-end</div>
-        <div class="align-desc">I started with a donated wheelchair and ended with a working autonomous perception system: power wiring, ESP32 firmware, ROS2 drivers, sensor fusion, and MATLAB simulation testing both hardware and software. I solved the ROS1→ROS2 migration myself. </div>
+      <div class="skill-card fade-up" style="transition-delay:0.25s">
+        <div class="skill-num">06</div>
+        <div class="skill-name">End-to-End Ownership</div>
+        <div class="skill-desc">Started with a donated wheelchair and ended with a working autonomous perception system: power wiring, ESP32 firmware, ROS2 drivers, sensor fusion, and MATLAB simulation. Solved the ROS1→ROS2 migration independently. High-agency, full-stack execution.</div>
       </div>
     </div>
   </div>
@@ -1663,24 +1642,24 @@
 <section id="contact">
   <div class="container">
     <div class="fade-up">
-      <div class="section-tag" style="justify-content:center;">Submition for WindsBorne</div>
+      <div class="section-tag" style="justify-content:center;">Get in Touch</div>
       <h2>Let's Talk</h2>
       <p>
-         Weather uncertainty kills people. It misroutes disaster responders, misdirects hurricane evacuations, and costs billions in avoidable damage every year. WindBorne's mission to build a planetary nervous system that closes the global atmospheric data gap is exactly the kind of problem I want to work on
+        I'm a junior Robotics, Mechatronics &amp; Automation Engineering student at Widener University, looking for opportunities in hardware engineering, embedded systems, robotics, and sensor integration. If you're working on a hard problem involving physical hardware and real-world data, I'd love to connect.
       </p>
 
       <div class="contact-links">
-        <a href="mailto:salient@example.com" class="contact-chip">
+        <a href="mailto:sfmakiankonghoenoh@widener.edu" class="contact-chip">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           sfmakiankonghoenoh@widener.edu
         </a>
-        <a href="https://linkedin.com/in/salient-fausta-makia" target="_blank" class="contact-chip">
+        <a href="https://www.linkedin.com/in/salient-fausta" target="_blank" class="contact-chip">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          www.linkedin.com/in/salient-fausta
+          linkedin.com/in/salient-fausta
         </a>
-        <a href="https://github.com/salient-makia" target="_blank" class="contact-chip">
+        <a href="https://github.com/makiafausta-netizen" target="_blank" class="contact-chip">
           <svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-          https://github.com/makiafausta-netizen
+          github.com/makiafausta-netizen
         </a>
       </div>
 
@@ -1693,7 +1672,7 @@
 
 <div class="footer">
   <div class="container">
-    built for windborne systems sensors internship application · 2026
+    salient fausta makia · hardware engineering portfolio · 2026
   </div>
 </div>
 
